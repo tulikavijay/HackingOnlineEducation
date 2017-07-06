@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+.hero{
+  background: url({% static "img/hero1.jpg" %});
+  background-size: cover;
+  filter: grayscale(70%);
+  height:500px;
+  width:auto;
+}
+.title{
+  font-family:'Oxygen';
+  height:100%;
+  font-size:66px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+
+{% endblock %}
+ <body>
+
+   {% block content %}
+   <div class="container-fluid hero">
+    <div class="title">
+      {{title}}
+        <a href="{url % 'register' %}" class="btn btn-primary" style="background:black;border-color:black;">Register</a>
+      </div>
+
+   </div>
+
+   <!--<form method='POST' action=''>{% csrf_token %}
+   {{form.as_p}}
+   <input type="submit" class="btn submit">
+ </form>-->
+
+   {% endblock %}
+
+</body>

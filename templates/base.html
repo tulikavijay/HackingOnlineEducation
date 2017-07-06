@@ -1,0 +1,42 @@
+<head>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato|Oxygen|Poiret+One|Quicksand|Raleway');
+body{
+  font-family: 'Lato';
+  height:100%;
+}
+.main{
+  margin-top:50px;
+}
+.heading{
+  font-family:'Oxygen';
+  font-size:36px;
+  color:gray;
+  text-align:center;
+  margin-top:30px;
+  margin-bottom:30px;
+}
+.submit{
+  border: 0px solid;
+  font-family: 'Raleway';
+  font-size: 0.8em;
+  height: 30px;
+  width:100px;
+}
+{% block style %}
+{% endblock %}
+</style>
+</head>
+<body>
+  {% include "navbar.html" %}
+  <div class="main">
+  <div class="section">
+  {% block content %}
+  {% endblock %}
+</div>
+</div>
+{% include "footer.html" %}
+</body>
