@@ -10,12 +10,14 @@ def home(request):
 
 def signup(request):
     form=SignUpForm(request.POST or None)
+    context={
+    'title':'Sign up for our newsletter',
+    'form' : form,
+    }
     instance=form.save(commit=False)
-    context={}
     if form.is_valid() :
         instance.save()
         context={
-        'title':'Sign up for our newsletter',
-        'form' : form
+        'title':'Thank you!'
         }
     return render(request,'signup.html',context)
