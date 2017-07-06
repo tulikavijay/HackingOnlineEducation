@@ -8,3 +8,6 @@ from django.db import models
 class SignUp(models.Model):
      full_name=models.CharField(max_length=60,blank=True)
      email=models.EmailField()
+
+     def __unicode__(self):
+         return self.email
