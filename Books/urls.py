@@ -17,8 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from newsletter import views
 
 urlpatterns = [
+    url(r'^$',views.home, name='home'),
+    url(r'^signup/',views.signup, name='signup'),
     url(r'^admin/', admin.site.urls),
 ]
 
