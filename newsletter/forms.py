@@ -19,7 +19,7 @@ class UserForm(forms.ModelForm):
         model=User
         fields=['full_name','email','password']
 
-class UserProfileForm():
+class UserProfileForm(forms.ModelForm):
     class Meta():
         model=UserProfile
         fields=['user_name','image']

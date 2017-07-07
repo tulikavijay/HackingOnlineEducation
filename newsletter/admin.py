@@ -21,8 +21,8 @@ class UserAdmin(admin.ModelAdmin):
     list_display=["__unicode__","full_name","email"]
     form=UserForm
 
-class SignUpAdmin(admin.ModelAdmin):
-    list_display=["__unicode__","full_name","email"]
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display=["__unicode__","user_name"]
     form=UserProfileForm
 
 

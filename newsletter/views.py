@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from .forms import SignUpForm
+from .forms import SignUpForm,UserForm,UserProfileForm
 
 # Create your views here.
 def home(request):
@@ -21,3 +21,31 @@ def signup(request):
         'title':'Thank you!'
         }
     return render(request,'signup.html',context)
+
+def register(request):
+
+    if request.method =='POST':
+        user_form=UserForm(request.POST or None)
+        profile_form=UserProfileForm(request.POST or None)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user=user_form.save()
+            user.set_password(user.password)
+            user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            # Did the user provide a profile picture?
+            # If so, we need to get it from the input form and put it in the UserProfile model
+
+            if 'image' in request.FILES:
+                profile.picture = request.FILES['image']
+                # Now we save the UserProfile model instance.
+                profile.save()
+
+            # Update our variable to tell the template registration was successful.
+                registered = True
+    else:
+        user_form=UserForm(request.POST or None)
+        profile_form=UserProfileForm(request.POST or None)
+
+    return render(request,'register.html',{'user_form':user_form,'profile_form':profile_form})
