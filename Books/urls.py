@@ -22,6 +22,7 @@ from newsletter import views
 urlpatterns = [
     url(r'^$',views.home, name='home'),
     url(r'^signup/',views.signup, name='signup'),
+    url(r'^register/',views.register, name='register'),
     url(r'^admin/', admin.site.urls),
 ]
 
