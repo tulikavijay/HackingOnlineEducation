@@ -11,3 +11,19 @@ class SignUp(models.Model):
 
      def __unicode__(self):
          return self.email
+         
+class User(models.Model):
+    full_name=models.CharField(max_length=60,blank=False)
+    email=models.EmailField(blank=False)
+    password=models.CharField(max_length=40,blank=False)
+
+    def __unicode__(self):
+        return self.full_name
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    user_name=models.CharField(max_length=60)
+    image=models.ImageField(upload_to='profile_images', blank=True)
+
+    def __unicode__(self):
+        return self.user_name
