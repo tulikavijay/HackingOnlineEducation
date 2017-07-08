@@ -1,5 +1,6 @@
 from django import forms
 from .models import SignUp,User,UserProfile
+from django.contrib.auth.models import User
 
 class SignUpForm(forms.ModelForm):
     class Meta():
@@ -15,11 +16,17 @@ class SignUpForm(forms.ModelForm):
         return full_name
 
 class UserForm(forms.ModelForm):
+    password=forms.CharField(widget=forms.PasswordInput())
     class Meta():
         model=User
-        fields=['full_name','email','password']
+        fields=['username','email','password']
 
 class UserProfileForm(forms.ModelForm):
     class Meta():
         model=UserProfile
-        fields=['user_name','image']
+        fields=['image']
+
+#class ContactForm(forms.Form):
+    #    name=forms.CharField(max_length=20,required=False)
+    #    Email=forms.EmailField()
+    #    message=forms.CharField(max_length=120)

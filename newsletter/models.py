@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -11,19 +11,12 @@ class SignUp(models.Model):
 
      def __unicode__(self):
          return self.email
-         
-class User(models.Model):
-    full_name=models.CharField(max_length=60,blank=False)
-    email=models.EmailField(blank=False)
-    password=models.CharField(max_length=40,blank=False)
 
-    def __unicode__(self):
-        return self.full_name
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    user_name=models.CharField(max_length=60)
+    #user_name=models.CharField(max_length=60)
     image=models.ImageField(upload_to='profile_images', blank=True)
 
     def __unicode__(self):
-        return self.user_name
+        return self.user.user_name

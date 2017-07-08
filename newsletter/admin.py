@@ -17,17 +17,17 @@ class SignUpAdmin(admin.ModelAdmin):
     list_display=["__unicode__","full_name","email"]
     form=SignUpForm
 
-class UserAdmin(admin.ModelAdmin):
-    list_display=["__unicode__","full_name","email"]
-    form=UserForm
+#class UserAdmin(admin.ModelAdmin):
+#    list_display=["__unicode__","full_name","email"]
+#    form=UserForm
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display=["__unicode__","user_name"]
+    list_display=["__unicode__","image"]
     form=UserProfileForm
 
 
 admin.site.register(SignUp,SignUpAdmin)
 
-admin.site.register(User,UserAdmin)
+#admin.site.register(User,UserAdmin)
 
 admin.site.register(UserProfile,UserProfileAdmin)
