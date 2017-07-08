@@ -17,14 +17,39 @@ body{
   color:gray;
   text-align:center;
   margin-top:30px;
+  margin-bottom:10px;
+}
+.sub-heading{
+  font-family:'Oxygen';
+  font-size:20px;
+  color:gray;
+  text-align:center;
   margin-bottom:30px;
 }
+.center{
+  padding-top: 100px;
+  padding-bottom: 150px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.center-horizontal{
+  padding-top: 100px;
+  padding-bottom: 150px;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+}
 .submit{
-  border: 0px solid;
-  font-family: 'Raleway';
-  font-size: 0.8em;
-  height: 30px;
-  width:100px;
+  width:120px;
+  height: 40px;
+  font-size: 16px;
+  color:white;
+  text-align: center;
+  background: grey;
+  border:0px solid;
 }
 {% block style %}
 {% endblock %}
@@ -32,11 +57,13 @@ body{
 </head>
 <body>
   {% include "navbar.html" %}
-  <div class="main">
-  <div class="section">
+<div class="main">
+  <div class="content">
   {% block content %}
   {% endblock %}
-</div>
+  </div>
+  {% block section %}
+  {% endblock %}
 </div>
 {% include "footer.html" %}
 </body>

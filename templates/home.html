@@ -2,7 +2,7 @@
 {% load static %}
 {% block style %}
 .hero{
-  background: url({% static "static_root/hero1.jpg" %});
+  background: url({% static "static_root/6.png" %});
   background-size: cover;
   filter: grayscale(70%);
   height:500px;
@@ -18,7 +18,22 @@
   justify-content:center;
   align-items:center;
 }
-
+.categories{
+  padding-bottom:100px;
+  padding-top:40px;
+}
+.category{
+  height:300px;
+  background:purple;
+  filter: grayscale(70%);
+}
+.signup{
+  background:url({% static 'static_root/3.png' %});
+  filter: grayscale(70%);
+}
+a{
+  color:white;
+}
 
 {% endblock %}
  <body>
@@ -27,15 +42,40 @@
    <div class="container-fluid hero">
     <div class="title">
       {{title}}
-        <a href="{% url 'register' %}" class="btn btn-primary" style="background:black;border-color:black;">Register</a>
+        <a href="{% url 'register' %}" class="btn btn-default btn-lg" >  Register  </a>
       </div>
 
    </div>
+   {% endblock %}
 
    <!--<form method='POST' action=''>{% csrf_token %}
    {{form.as_p}}
    <input type="submit" class="btn submit">
  </form>-->
+ {% block section %}
+
+ <div class="categories row">
+   <div class="heading">Categories</div>
+   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
+   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+ </div>
+
+ <div class="center signup">
+   <div class="heading" style="color:white;">Sign Up for our Newsletter</div>
+   <div class="sub-heading" style="color:white;">Get regular updates on your phone and all devices. Just click on the link below</div>
+   <div  class="btn btn-default btn-lg" style="color:white;"> <a href="{% url 'signup' %}">  SignUp  </a>
+   </div>
+ </div>
+
+ <div class="contact center">
+   <div class="heading">Contact Us</div>
+   <div class="sub-heading">If you have a question, we have an answer. If you need something, we’ll help you. Contact us anytime.</div>
+    <div> <a href="{% url 'contact' %}"  class="btn btn-default btn-lg" style="color:white;background:#85428a">  Contact  </a>
+ </div>
 
    {% endblock %}
 
