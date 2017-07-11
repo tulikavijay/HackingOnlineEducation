@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block style %}
+.categories{
+  padding-bottom:100px;
+  padding-top:40px;
+}
+.category{
+  height:300px;
+  background:purple;
+  filter: grayscale(70%);
+}
+{% endblock %}
+{% block content %}
+<div class="categories row">
+  <div class="heading">Categories</div>
+  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
+  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
+  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
+  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+</div
+{% endblock %}

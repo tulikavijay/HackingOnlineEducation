@@ -39,9 +39,18 @@ a:hover{
     <div class="navbar-collapse collapse  navbar-right" id="nav">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li><a href=#><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% if user.is_authenticated %}
+
+       <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-th-list"></span> Profile</a></li>
+        {% else %}
+
+         <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
         <li><a href=#><span class="glyphicon glyphicon-list-alt"></span> About</a></li>
         <li><a href="{% url 'contact' %}"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-earphone"></span> Logout</a></li>
+        {% endif %}
       </ul>
     </div>
     </div>

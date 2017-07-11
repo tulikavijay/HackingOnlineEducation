@@ -18,13 +18,18 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from newsletter import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$',views.home, name='home'),
     url(r'^signup/',views.signup, name='signup'),
-    url(r'^register/',views.register, name='register'),
     url(r'^contact/',views.contact, name='contact'),
-    #url(r'^register/userprofile/',views.register, name='userprofile'),
+    url(r'^register/',views.register, name='register'),
+    url(r'^login/',auth_views.login, name='login'),
+    url(r'^accounts/logout/',auth_views.logout, name='logout'),
+    url(r'^accounts/profile',views.profile, name='profile'),
+    url(r'^explore',views.explore, name='explore'),
+#    url(r'^profile_images/(.*)$',django.views.static.serve,{'document_root':settings.MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]
 

@@ -129,7 +129,10 @@ STATICFILES_DIRS = [
 STATIC_ROOT=os.path.join(BASE_DIR,'static','static_root')
 
 MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'media','profile_images')
 
 #crispy_forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+LOGIN_REDIRECT_URL='profile'
+LOGOUT_REDIRECT_URL='home'

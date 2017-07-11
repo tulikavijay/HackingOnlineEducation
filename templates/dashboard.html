@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block style %}
+.profile_picture{
+  height:300px;
+  width:300px;
+}
+.user_info{
+  height:300px;
+}
+{% endblock %}
+{% block content %}
+<div class="sub-heading">Welcome {{request.user.username}}</div>
+<div class="row">
+<div class="profile_picture col-lg-3 col-md-3 col-sm-10 col-xs-10">
+  {{profile_picture}}
+   <img src={{profile_picture.model_pic.url}}>
+</div>
+<div class="user_info col-lg-6 col-md-6 col-sm-10 col-xs-10">
+</div>
+</div>
+{% endblock %}

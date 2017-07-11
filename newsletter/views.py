@@ -2,10 +2,12 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 from django.shortcuts import render
 from .forms import SignUpForm,UserForm,UserProfileForm
-
+from django.contrib.auth.decorators import login_required
+#importing models
+from .models import UserProfile
 # Create your views here.
 def home(request):
     return render(request,'home.html',{'title':'Welcome','dashboard':'DashBoard'})
@@ -75,3 +77,18 @@ def contact(request):
      #"title":title,
     #}
     #return render(request,'contact.html',context)
+
+def explore(request):
+    context={}
+    return render(request,'categories.html',context)
+
+
+@login_required
+def profile(request):
+    #user=get_object_or_404(User,user_username=self.kwargs['username'])
+    model=UserProfile
+    profile_picture=UserProfile.image
+    context={
+    'profile_picture':profile_picture
+    }
+    return render(request,'dashboard.html',context)
