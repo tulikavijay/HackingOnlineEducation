@@ -87,8 +87,9 @@ def explore(request):
 def profile(request):
     #user=get_object_or_404(User,user_username=self.kwargs['username'])
     model=UserProfile
-    profile_picture=UserProfile.image
+    userprofile=UserProfile.objects.get(user=request.user)
     context={
-    'profile_picture':profile_picture
+    'user':request.user,
+    'userprofile':userprofile
     }
     return render(request,'dashboard.html',context)
