@@ -15,8 +15,25 @@ class SignUp(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    #user_name=models.CharField(max_length=60)
+    phone=models.CharField(max_length=10)
+    designation=models.CharField(max_length=20)
     image=models.ImageField(upload_to='profile_images', blank=True)
 
     def __unicode__(self):
         return self.user.username
+
+class Categories(models.Model):
+    category_name=models.CharField(max_length=30,null=False)
+    url=models.URLField()
+    description=models.TextField()
+    rating=models.IntegerField()
+    def __unicode__(self):
+        return self.category_name
+
+class Pages(models.Model):
+    category=models.ForeignKey(Categories,on_delete=models.CASCADE,null=True)
+    name=models.CharField(max_length=30,null=False)
+    rating=models.IntegerField()
+    url=models.URLField()
+    def __unicode__(self):
+        return self.name

@@ -10,8 +10,8 @@ from django.contrib import admin
 # add list_display=["__unicode__","field2","field3"..]
 # form=model_form_name
 # admin.site.register(model_name,model_name_Admin)
-from .forms import SignUpForm,UserForm,UserProfileForm
-from .models import SignUp,User,UserProfile
+from .forms import SignUpForm,UserForm,UserProfileForm,CategoriesForm,PagesForm
+from .models import SignUp,User,UserProfile,Categories,Pages
 
 class SignUpAdmin(admin.ModelAdmin):
     list_display=["__unicode__","full_name","email"]
@@ -22,12 +22,21 @@ class SignUpAdmin(admin.ModelAdmin):
 #    form=UserForm
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display=["__unicode__","image"]
+    list_display=["__unicode__","designation","phone","image"]
     form=UserProfileForm
+
+class CategoriesAdmin(admin.ModelAdmin):
+    list_display=["__unicode__","url","rating","description"]
+    form=CategoriesForm
+
+class PagesAdmin(admin.ModelAdmin):
+    list_display=["__unicode__","url","rating"]
+    form=PagesForm
 
 
 admin.site.register(SignUp,SignUpAdmin)
-
+admin.site.register(Categories,CategoriesAdmin)
+admin.site.register(Pages,PagesAdmin)
 #admin.site.register(User,UserAdmin)
 
 admin.site.register(UserProfile,UserProfileAdmin)
