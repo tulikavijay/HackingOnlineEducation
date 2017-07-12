@@ -50,6 +50,7 @@ def register(request):
 
             # Update our variable to tell the template registration was successful.
                 registered=True
+                login(request,user)
                 #return render(request,'userprofile.html',{'profile_picture':profile.picture,
                 #'username':username})
             else:
