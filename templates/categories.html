@@ -10,15 +10,35 @@
   background:purple;
   filter: grayscale(70%);
 }
+.box{
+  padding-top:40px;
+  padding-bottom:50px;
+}
+img{
+  display: block;
+  margin:auto;
+  border: 0px solid;
+  box-shadow:1px 2px 3px grey;
+}
 {% endblock %}
 {% block content %}
-<div class="categories row">
+<div class="categories">
   <div class="heading">Categories</div>
-  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
+<!--  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
-  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>-->
+  <div class="row box">
+  {% if categories %}
+    {% for category in categories %}
+      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:60px;">
+          <a href="{% url 'category' %}" target="_blank"> <img src={{category.image.url}} height='300px' width='300px'></a>
+      </div>
+      {% endfor %}
+  {% else %}
+  <div class="sub-heading">There are no categories</div>
+  {% endif %}
 </div
 {% endblock %}

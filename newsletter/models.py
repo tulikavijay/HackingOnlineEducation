@@ -27,6 +27,7 @@ class Categories(models.Model):
     url=models.URLField()
     description=models.TextField()
     rating=models.IntegerField()
+    image=models.ImageField(upload_to='categories', blank=True)
     def __unicode__(self):
         return self.category_name
 

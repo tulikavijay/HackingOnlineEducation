@@ -26,7 +26,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     form=UserProfileForm
 
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display=["__unicode__","url","rating","description"]
+    list_display=["__unicode__","url","rating","description","image"]
     form=CategoriesForm
 
 class PagesAdmin(admin.ModelAdmin):

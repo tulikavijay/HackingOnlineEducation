@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^accounts/logout/',auth_views.logout, name='logout'),
     url(r'^accounts/profile',views.profile, name='profile'),
     url(r'^explore',views.explore, name='explore'),
+    url(r'^explore/category/',views.category, name='category'),
 #    url(r'^profile_images/(.*)$',django.views.static.serve,{'document_root':settings.MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]

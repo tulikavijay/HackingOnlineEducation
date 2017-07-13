@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block style %}
+img{
+  display: block;
+  margin:auto;
+  border: 0px solid;
+  box-shadow:1px 2px 3px grey;
+}
+{% endblock %}
+{% block content %}
+<div class="base">
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+    <a href={{category.url}}>  <img src={{category.image.url}} height="300px" width="300px"></a>
+    <<div class="desc"><p>{{category.description}}</p><</div>
+  </div>
+  <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+  </div>
+</div>
+{% endblock %}

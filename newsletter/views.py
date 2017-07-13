@@ -87,6 +87,14 @@ def explore(request):
     }
     return render(request,'categories.html',context)
 
+def category(request,category):
+    category=Categories.objects.get(category_name)
+    pages=Pages.objects.all()
+    context={
+    'category':category,
+    'pages':pages,
+    }
+    return render(request,'category.html',context)
 
 @login_required
 def profile(request):
