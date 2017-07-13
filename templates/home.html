@@ -11,7 +11,7 @@
 .title{
   font-family:'Oxygen';
   height:100%;
-  font-size:66px;
+  font-size:48px;
   color:white;
   display:flex;
   flex-direction:column;
@@ -46,6 +46,10 @@ a{
              <a href="{% url 'explore' %}" class="btn btn-default btn-lg" >  Explore  </a>
       {% else %}
       {{title}}
+      <div class="sub-heading" style="color:white">
+        All Online Courses in one place with ratings and reviews. Just click on the register button to open
+        a free account.
+      </div>
         <a href="{% url 'register' %}" class="btn btn-default btn-lg" >  Register  </a>
       {% endif %}
       </div>

@@ -7,7 +7,7 @@ from django.shortcuts import render
 from .forms import SignUpForm,UserForm,UserProfileForm
 from django.contrib.auth.decorators import login_required
 #importing models
-from .models import UserProfile
+from .models import UserProfile,Categories,Pages
 # Create your views here.
 def home(request):
     return render(request,'home.html',{'title':'Welcome','dashboard':'DashBoard'})
@@ -80,7 +80,11 @@ def contact(request):
     #return render(request,'contact.html',context)
 
 def explore(request):
-    context={}
+    model=Categories
+    categories=Categories.objects.all()
+    context={
+    'categories':categories
+    }
     return render(request,'categories.html',context)
 
 

@@ -49,7 +49,7 @@ a:hover{
         <li><a href=#><span class="glyphicon glyphicon-list-alt"></span> About</a></li>
         <li><a href="{% url 'contact' %}"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
         {% if user.is_authenticated %}
-          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-earphone"></span> Logout</a></li>
+          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
         {% endif %}
       </ul>
     </div>
