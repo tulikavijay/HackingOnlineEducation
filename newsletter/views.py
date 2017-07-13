@@ -10,7 +10,12 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile,Categories,Pages
 # Create your views here.
 def home(request):
-    return render(request,'home.html',{'title':'Welcome','dashboard':'DashBoard'})
+    category_list = Categories.objects.order_by('-rating')[:4]
+    context = {
+     'categories': category_list,
+     'title':'Welcome'
+    }
+    return render(request,'home.html',context)
 
 def signup(request):
     form=SignUpForm(request.POST or None)
@@ -87,9 +92,12 @@ def explore(request):
     }
     return render(request,'categories.html',context)
 
-def category(request,category):
-    category=Categories.objects.get(category_name)
-    pages=Pages.objects.all()
+def pages(request,category):
+    #category=Categories.objects.get(category_name=category)
+    model=Pages
+    model=Categories
+    category=Categories.objects.get(category_name=category)
+    pages=Pages.objects.get(category=category)
     context={
     'category':category,
     'pages':pages,

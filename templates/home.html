@@ -31,6 +31,16 @@
   background:url({% static 'static_root/3.png' %});
   filter: grayscale(70%);
 }
+img{
+  display: block;
+  margin:auto;
+  border: 0px solid;
+  box-shadow:1px 2px 3px grey;
+}
+.box{
+  padding-top:40px;
+  padding-bottom:50px;
+}
 a{
   color:white;
 }
@@ -64,11 +74,26 @@ a{
  {% block section %}
 
  <div class="categories row">
-   <div class="heading">Categories</div>
-   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="heading">Top Online Sources</div>
+   <!--<div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
    <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
    <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
-   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>-->
+   <div class="row box">
+   {% if categories %}
+     {% for category in categories %}
+       <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:60px;">
+           <a href="{% url 'pages' category.category_name %}" target="_blank"> <img src={{category.image.url}} height='300px' width='300px'></a>
+       </div>
+       {% endfor %}
+
+
+   {% else %}
+   <div class="sub-heading">There are no categories</div>
+   {% endif %}
+
+ </div>
+ <div class="sub-heading"><p><a href="{% url 'explore' %}">Click here for all Sources</a></p></div>
  </div>
 
  <div class="center signup">

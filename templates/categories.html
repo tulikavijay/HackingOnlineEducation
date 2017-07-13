@@ -34,11 +34,11 @@ img{
   {% if categories %}
     {% for category in categories %}
       <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:60px;">
-          <a href="{% url 'category' %}" target="_blank"> <img src={{category.image.url}} height='300px' width='300px'></a>
+          <a href="{% url 'pages' category.category_name %}" target="_blank"> <img src={{category.image.url}} height='300px' width='300px'></a>
       </div>
       {% endfor %}
   {% else %}
   <div class="sub-heading">There are no categories</div>
   {% endif %}
-</div
+</div>
 {% endblock %}
