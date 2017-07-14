@@ -92,12 +92,11 @@ def explore(request):
     }
     return render(request,'categories.html',context)
 
-def pages(request,category):
+def category(request,category_name):
     #category=Categories.objects.get(category_name=category)
     model=Pages
-    model=Categories
-    category=Categories.objects.get(category_name=category)
-    pages=Pages.objects.get(category=category)
+    category=Categories.objects.get(category_name=category_name)
+    pages=Pages.objects.filter(category=category)
     context={
     'category':category,
     'pages':pages,
