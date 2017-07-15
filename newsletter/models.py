@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     phone=models.CharField(max_length=10)
     designation=models.CharField(max_length=20)
-    image=models.ImageField(upload_to='profile_images', blank=True)
+    image=models.ImageField(upload_to='profile_images', blank=False)
 
     def __unicode__(self):
         return self.user.username
