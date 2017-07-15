@@ -38,3 +38,35 @@ class Pages(models.Model):
     url=models.URLField()
     def __unicode__(self):
         return self.name
+
+class Course(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    course=models.CharField(max_length=50)
+    timestamp=models.TimeField()
+    def __unicode__(self):
+        return self.course
+
+class StandAlone(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    name=models.CharField(max_length=50)
+    url=models.URLField()
+    description=models.TextField()
+    image=models.ImageField(upload_to='course')
+    def __unicode__(self):
+        return self.name
+
+class Challenge(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    name=models.CharField(max_length=50)
+    url=models.URLField()
+    description=models.TextField()
+    rating=models.IntegerField()
+    image=models.ImageField(upload_to='course')
+    def __unicode__(self):
+        return self.name
+
+class Code100(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    timestamp=models.TimeField()
+    started=models.BooleanField()
+    done=models.BooleanField(blank=True)
