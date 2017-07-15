@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block style %}
+.categories{
+  padding-bottom:100px;
+  padding-top:40px;
+}
+.category{
+  height:300px;
+  background:purple;
+  filter: grayscale(70%);
+}
+.box{
+  padding-top:40px;
+  padding-bottom:50px;
+}
+img{
+  display: block;
+  margin:auto;
+  border: 0px solid;
+  box-shadow:1px 2px 3px grey;
+}
+{% endblock %}
+{% block content %}
+<div class="categories container">
+  <div class="heading">Categories</div>
+<!--  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
+  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
+  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
+  <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>-->
+  <div class="row box">
+  {% if challenges %}
+    {% for challenge in challenges %}
+      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:60px;">
+          <a href="{{challenge.url}}" target="_blank"> <img src={{challenge.image.url}} height='200px' width='200px' style="border:0px solid;border-radius:100%;"></a>
+      </div>
+      {% endfor %}
+  {% else %}
+  <div class="sub-heading">There are no categories</div>
+  {% endif %}
+</div>
+{% endblock %}

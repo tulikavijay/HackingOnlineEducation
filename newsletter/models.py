@@ -28,6 +28,7 @@ class Categories(models.Model):
     description=models.TextField()
     rating=models.IntegerField()
     image=models.ImageField(upload_to='categories', blank=True)
+    sort=models.CharField(max_length=30,default='courses')
     def __unicode__(self):
         return self.category_name
 
@@ -70,3 +71,5 @@ class Code100(models.Model):
     timestamp=models.TimeField()
     started=models.BooleanField()
     done=models.BooleanField(blank=True)
+    def __unicode__(self):
+        return self.started

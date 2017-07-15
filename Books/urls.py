@@ -30,7 +30,8 @@ urlpatterns = [
     url(r'^login/',auth_views.login, name='login'),
     url(r'^accounts/logout/',auth_views.logout, name='logout'),
     url(r'^explore/',views.explore, name='explore'),
-    url(r'^(?P<category_name>.+)/$',views.category, name='category'),
+    url(r'^courses/(?P<category_name>.+)/$',views.category, name='category'),
+    url(r'^challenges/',views.challenges, name='challenges'),
 #    url(r'^profile_images/(.*)$',django.views.static.serve,{'document_root':settings.MEDIA_ROOT}),
 ]
 

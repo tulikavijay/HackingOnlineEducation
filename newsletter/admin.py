@@ -11,7 +11,7 @@ from django.contrib import admin
 # form=model_form_name
 # admin.site.register(model_name,model_name_Admin)
 from .forms import SignUpForm,UserForm,UserProfileForm,CategoriesForm,PagesForm
-from .models import SignUp,User,UserProfile,Categories,Pages
+from .models import SignUp,User,UserProfile,Categories,Pages,Course,StandAlone,Challenge,Code100
 
 class SignUpAdmin(admin.ModelAdmin):
     list_display=["__unicode__","full_name","email"]
@@ -26,17 +26,33 @@ class UserProfileAdmin(admin.ModelAdmin):
     form=UserProfileForm
 
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display=["__unicode__","url","rating","description","image"]
+    list_display=["__unicode__","url","rating","description","image","sort"]
     form=CategoriesForm
 
 class PagesAdmin(admin.ModelAdmin):
     list_display=["__unicode__","url","rating"]
     form=PagesForm
 
+class CourseAdmin(admin.ModelAdmin):
+    list_display=["__unicode__","timestamp"]
+
+class StandAloneAdmin(admin.ModelAdmin):
+    list_display=["__unicode__","url","description","image"]
+
+class ChallengeAdmin(admin.ModelAdmin):
+    list_display=["__unicode__","url","rating","description","image"]
+
+class Code100Admin(admin.ModelAdmin):
+    list_display=["user","started","timestamp","done"]
+
 
 admin.site.register(SignUp,SignUpAdmin)
 admin.site.register(Categories,CategoriesAdmin)
 admin.site.register(Pages,PagesAdmin)
+admin.site.register(Course,CourseAdmin)
+admin.site.register(Challenge,ChallengeAdmin)
+admin.site.register(StandAlone,StandAloneAdmin)
+admin.site.register(Code100,Code100Admin)
 #admin.site.register(User,UserAdmin)
 
 admin.site.register(UserProfile,UserProfileAdmin)

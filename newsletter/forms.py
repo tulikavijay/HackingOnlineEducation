@@ -29,7 +29,7 @@ class UserProfileForm(forms.ModelForm):
 class CategoriesForm(forms.ModelForm):
     class Meta():
         model=Categories
-        fields=['category_name','url','rating','description','image']
+        fields=['category_name','url','rating','description','sort','image']
 
 class PagesForm(forms.ModelForm):
     class Meta():

@@ -73,6 +73,7 @@ a{
  </form>-->
  {% block section %}
 
+
  <div class="categories">
    <div class="heading">Top Online Sources</div>
    <!--<div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
@@ -97,6 +98,34 @@ a{
  </div>
   </div>
  <div class="sub-heading"><p><a href="{% url 'explore' %}">Click here for all Sources</a></p></div>
+
+ </div>
+
+<hr style="width:70%;margin:auto;color:gray;background-color:gray;">
+
+ <div class="categories">
+   <div class="heading">Challenge Yourself!</div>
+   <!--<div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
+   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
+   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>-->
+   <div class="box container">
+   <div class="row">
+   {% if challenges %}
+     {% for challenge in challenges %}
+       <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:60px;">
+           <a href="{{challenge.url}}" target="_blank">
+              <img src={{challenge.image.url}} height='200px' width='200px' style="border:0px solid;border-radius:100%;"></a>
+       </div>
+       {% endfor %}
+
+   {% else %}
+   <div class="sub-heading">There are no categories</div>
+   {% endif %}
+
+ </div>
+  </div>
+ <div class="sub-heading"><p><a href="{% url 'challenges' %}">Click here for all Sources</a></p></div>
 
  </div>
 
