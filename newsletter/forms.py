@@ -1,5 +1,5 @@
 from django import forms
-from .models import SignUp,User,UserProfile
+from .models import SignUp,User,UserProfile,Categories,Pages
 from django.contrib.auth.models import User
 
 class SignUpForm(forms.ModelForm):
@@ -24,8 +24,17 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta():
         model=UserProfile
-        fields=['image']
+        fields=['designation','phone','image']
 
+class CategoriesForm(forms.ModelForm):
+    class Meta():
+        model=Categories
+        fields=['category_name','url','rating','description','sort','image']
+
+class PagesForm(forms.ModelForm):
+    class Meta():
+        model=Pages
+        fields=['name','url','rating','category']
 #class ContactForm(forms.Form):
     #    name=forms.CharField(max_length=20,required=False)
     #    Email=forms.EmailField()

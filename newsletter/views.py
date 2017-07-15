@@ -7,10 +7,26 @@ from django.shortcuts import render
 from .forms import SignUpForm,UserForm,UserProfileForm
 from django.contrib.auth.decorators import login_required
 #importing models
-from .models import UserProfile
+from .models import UserProfile,Categories,Pages
 # Create your views here.
 def home(request):
-    return render(request,'home.html',{'title':'Welcome','dashboard':'DashBoard'})
+    challenges=Categories.objects.filter(sort='challenges').order_by('-rating')[:4]
+    standalones=Categories.objects.filter(sort='standalones')
+    category_list = Categories.objects.filter(sort='courses').order_by('-rating')[:4]
+    context = {
+     'categories': category_list,
+     'challenges':challenges,
+     'standalones':standalones,
+     'title':'Welcome'
+    }
+    return render(request,'home.html',context)
+
+def challenges(request):
+    challenges=Categories.objects.filter(sort='challenges')
+    context={
+    'challenges':challenges
+    }
+    return render(request,'challenges.html',context)
 
 def signup(request):
     form=SignUpForm(request.POST or None)
@@ -50,6 +66,7 @@ def register(request):
 
             # Update our variable to tell the template registration was successful.
                 registered=True
+                login(request,user)
                 #return render(request,'userprofile.html',{'profile_picture':profile.picture,
                 #'username':username})
             else:
@@ -79,16 +96,31 @@ def contact(request):
     #return render(request,'contact.html',context)
 
 def explore(request):
-    context={}
+    model=Categories
+    categories=Categories.objects.filter(sort='courses')
+    context={
+    'categories':categories
+    }
     return render(request,'categories.html',context)
 
+def category(request,category_name):
+    #category=Categories.objects.get(category_name=category)
+    model=Pages
+    category=Categories.objects.get(category_name=category_name)
+    pages=Pages.objects.filter(category=category)
+    context={
+    'category':category,
+    'pages':pages,
+    }
+    return render(request,'category.html',context)
 
 @login_required
 def profile(request):
     #user=get_object_or_404(User,user_username=self.kwargs['username'])
     model=UserProfile
-    profile_picture=UserProfile.image
+    userprofile=UserProfile.objects.get(user=request.user)
     context={
-    'profile_picture':profile_picture
+    'user':request.user,
+    'userprofile':userprofile
     }
     return render(request,'dashboard.html',context)

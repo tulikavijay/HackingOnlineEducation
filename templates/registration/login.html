@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block style %}
 .login_form{
+  padding-top:50px;
   padding-bottom:50px;
 }
 {% endblock %}
@@ -8,5 +9,6 @@
 <div class="login_form">
 <div class="heading">Login</div>
 {% include 'forms.html' %}
+<div class="center" style="padding-top:10px;"><a href="{% url 'register' %}">New user?sign in here</a></div>
 </div>
 {% endblock %}

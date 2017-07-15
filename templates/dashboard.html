@@ -1,21 +1,42 @@
 {% extends 'base.html' %}
 {% block style %}
+.body{
+  box-sizing:border-box;
+}
 .profile_picture{
-  height:300px;
-  width:300px;
+  padding-left:0px;
+  padding-right:0px;
 }
 .user_info{
   height:300px;
 }
+.container{
+  padding-top:70px;
+  padding-bottom:70px;
+}
+img{
+  display: block;
+  margin:auto;
+  border: 0px solid;
+  box-shadow:1px 2px 3px grey;
+}
 {% endblock %}
 {% block content %}
-<div class="sub-heading">Welcome {{request.user.username}}</div>
+<div class="container">
+  <div class="sub-heading">Welcome {{request.user.username}}</div>
+
 <div class="row">
-<div class="profile_picture col-lg-3 col-md-3 col-sm-10 col-xs-10">
-  {{profile_picture}}
-   <img src={{profile_picture.model_pic.url}}>
+<div class="col-lg-3 col-md-3 col-sm-10 col-xs-10 profile_picture">
+   <img src={{userprofile.image.url}} height="290px" width="262.5px" >
 </div>
 <div class="user_info col-lg-6 col-md-6 col-sm-10 col-xs-10">
+  <div style="font-family:'Lato';color:grey;font-size:24px;">
+  User : {{user}}<br>
+  Email : {{user.email}}<br>
+  Contact : {{userprofile.phone}}<br>
+  Designation : {{userprofile.designation}}
+</div>
+</div>
 </div>
 </div>
 {% endblock %}
