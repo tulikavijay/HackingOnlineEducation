@@ -2,10 +2,11 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from django.contrib.auth import login, authenticate,logout
+from django.contrib.auth import login, authenticate,logout,update_session_auth_hash
 from django.shortcuts import render
 from .forms import SignUpForm,UserForm,UserProfileForm
 from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.forms import UserChangeForm,PasswordChangeForm
 #importing models
 from .models import UserProfile,Categories,Pages
 # Create your views here.
@@ -13,16 +14,18 @@ def home(request):
     challenges=Categories.objects.filter(sort='challenges').order_by('-rating')[:4]
     standalones=Categories.objects.filter(sort='standalones')
     category_list = Categories.objects.filter(sort='courses').order_by('-rating')[:4]
+    pages=Pages.objects.order_by('-rating')[:5]
     context = {
      'categories': category_list,
      'challenges':challenges,
      'standalones':standalones,
-     'title':'Welcome'
+     'title':'Welcome',
+     'pages':pages,
     }
     return render(request,'home.html',context)
 
 def challenges(request):
-    challenges=Categories.objects.filter(sort='challenges')
+    challenges=Categories.objects.filter(sort='challenges').order_by('-rating')
     context={
     'challenges':challenges
     }
@@ -115,6 +118,18 @@ def category(request,category_name):
     return render(request,'category.html',context)
 
 @login_required
+
+def rating(request,category_name):
+    model=Pages
+    category=Categories.objects.get(category_name=category_name)
+    pages=Pages.objects.filter(category=category)
+    context={
+    'category':category,
+    'pages':pages,
+    }
+    return render(request,'rate.html',context)
+
+
 def profile(request):
     #user=get_object_or_404(User,user_username=self.kwargs['username'])
     model=UserProfile

@@ -1,6 +1,7 @@
 from django import forms
 from .models import SignUp,User,UserProfile,Categories,Pages
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
 
 class SignUpForm(forms.ModelForm):
     class Meta():
@@ -35,6 +36,27 @@ class PagesForm(forms.ModelForm):
     class Meta():
         model=Pages
         fields=['name','url','rating','category']
+
+# class EditProfileForm(forms.ModelForm):
+#     user=forms.CharField(required=True)
+#     email=forms.EmailField(required=True)
+#     # phone=forms.CharField(required=False)
+#     # designation=forms.CharField(required=False)
+#
+#     class Meta():
+#         model=User
+#         fields=['username','email']
+#     def save(self,commit=True):
+#             user=super(UserProfileForm,self).save(commit=False)
+#             user.email=self.cleaned_data.get('email')
+#             user.username=self.cleaned_data.get('username')
+#             if commit:
+#                 user.save()
+#             return user
+
+
+
+
 #class ContactForm(forms.Form):
     #    name=forms.CharField(max_length=20,required=False)
     #    Email=forms.EmailField()

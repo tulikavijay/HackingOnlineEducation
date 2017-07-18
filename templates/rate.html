@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block style %}
+img{
+  display: block;
+  margin:auto;
+  border: 0px solid;
+  box-shadow:1px 2px 3px grey;
+}
+.base{
+  padding-top:50px;
+  padding-bottom:80px;
+}
+.item{
+  font-family:'Lato';
+  font-size:18px;
+  color:gray;
+}
+div.stars{
+  width:270px;
+  display:inline-block;
+}
+input.star{
+  display:none;
+}
+label.star{
+  float:right;
+  padding:10px;
+  font-size:10px;
+  color:#444;
+  transition:all .2s;
+}
+input.star:checked ~ label.star:before{
+  content:'\f005';
+  color:#FD4;
+  transition:all .25s;
+}
+input.star-5:checked ~ label.star:before{
+
+  color:#FE7;
+}
+input.star-1:checked ~ label.star:before{
+  color:#F62;
+}
+label.star:hover{
+  transform:rotate(-15deg) scale(1.2);
+}
+label.star:before{
+  content:'\f006';
+  font-family:'FontAwesome';
+}
+{% endblock %}
+{% block content %}
+<div class="base container">
+  <div class="sub-heading">Rate and Review:</div>
+  <div class="row">
+  <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1 col-sm-12 col-xs-12">
+    {% if pages %}
+    <ul class="list-group" style="list-style-type:none;">
+    {% for page in pages %}
+    <li class="list-group-item item"><div class="row"><div class="pull-left">
+      <a href="{{page.url}}" target="_blank">{{page.name}}</a></div>
+      <div class="pull-right">
+        <div class="stars">
+          <form action="">{% csrf_token %}
+            <input class="star star-5" id="star-5" data-value="5" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}"/>
+            <label class="star star-5" for="star-5"></label>
+
+            <input class="star star-4" id="star-4" data-value="4" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <label class="star star-4" for="star-4"></label>
+
+            <input class="star star-3" id="star-3" data-value="3" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <label class="star star-3" for="star-3"></label>
+
+            <input class="star star-2" id="star-2" data-value="2" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <label class="star star-2" for="star-2"></label>
+
+            <input class="star star-1" id="star-1" data-value="1" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <label class="star star-1" for="star-1"></label>
+          </form>
+        </div>
+    </div>
+  </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+   <div class="sub-heading">No pages</div>
+   {% endif %}
+  </div>
+</div>
+{% endblock %}

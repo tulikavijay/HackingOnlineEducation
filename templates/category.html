@@ -29,6 +29,9 @@ img{
     <div class="desc" style="padding-top:20px; width:270px;"><p>{{category.description}}</p></div>
   </div>
   <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+    {% if user.is_authenticated %}
+    <div style="text-align:right;"><a href="{% url 'rating_courses' category.category_name %}">Rate Courses here</a></div>
+    {% endif %}
     {% if pages %}
     <ul class="list-group" style="list-style-type:none;">
     {% for page in pages %}
@@ -38,7 +41,7 @@ img{
         {% with ''|center:page.rating as range %}
          {% for _ in range %}
         <span>&#9733</span>
-        
+
         {% endfor %}
       {% endwith %}
     </div>

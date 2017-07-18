@@ -23,7 +23,7 @@ img{
 {% endblock %}
 {% block content %}
 <div class="categories container">
-  <div class="heading">Categories</div>
+  <div class="heading">Keep Practicing</div>
 <!--  <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
@@ -33,8 +33,17 @@ img{
   <div class="row box">
   {% if challenges %}
     {% for challenge in challenges %}
-      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:60px;">
-          <a href="{{challenge.url}}" target="_blank"> <img src={{challenge.image.url}} height='200px' width='200px' style="border:0px solid;border-radius:100%;"></a>
+      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:70px;padding-bottom:20px;">
+          <a href="{{challenge.url}}" target="_blank"><img src={{challenge.image.url}} height='200px' width='200px' style="border:0px solid;border-radius:100%;"></a>
+          <div style="text-align:center;padding-top:10px;">
+          {% with ''|center:challenge.rating as range %}
+           {% for _ in range %}
+          <span>&#9733</span>
+
+          {% endfor %}
+        {% endwith %}
+      </div>
+           <div class="desc" style="padding-top:10px; width:300px;">{{challenge.description}}</div>
       </div>
       {% endfor %}
   {% else %}

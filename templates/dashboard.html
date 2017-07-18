@@ -10,9 +10,11 @@
 .user_info{
   height:300px;
 }
-.container{
+.box{
   padding-top:70px;
   padding-bottom:70px;
+  padding-left:80px;
+  padding-right:80px;
 }
 img{
   display: block;
@@ -22,7 +24,7 @@ img{
 }
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class="container box">
   <div class="sub-heading">Welcome {{request.user.username}}</div>
 
 <div class="row">
@@ -30,7 +32,7 @@ img{
    <img src={{userprofile.image.url}} height="290px" width="262.5px" >
 </div>
 <div class="user_info col-lg-6 col-md-6 col-sm-10 col-xs-10">
-  <div style="font-family:'Lato';color:grey;font-size:24px;">
+  <div style="font-family:'Lato';color:grey;font-size:18px;">
   User : {{user}}<br>
   Email : {{user.email}}<br>
   Contact : {{userprofile.phone}}<br>

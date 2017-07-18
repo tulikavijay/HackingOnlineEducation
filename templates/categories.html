@@ -6,9 +6,8 @@
   padding-top:40px;
 }
 .category{
-  height:300px;
+  height:250px;
   background:purple;
-  filter: grayscale(70%);
 }
 .box{
   padding-top:40px;
@@ -34,7 +33,17 @@ img{
   {% if categories %}
     {% for category in categories %}
       <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:60px;">
-          <a href="{% url 'category' category.category_name %}" target="_blank"> <img src={{category.image.url}} height='300px' width='300px'></a>
+          <a href="{% url 'category' category.category_name %}" target="_blank"> <img src={{category.image.url}} height='250px' width='250px'></a>
+          <div style="text-align:center;padding-top:10px;">
+          {% with ''|center:category.rating as range %}
+           {% for _ in range %}
+          <span>&#9733</span>
+
+          {% endfor %}
+        {% endwith %}
+      </div>
+            <div class="desc" style="padding-top:10px; width:250px;"><p>{{category.description}}</p></div>
+
       </div>
       {% endfor %}
   {% else %}
