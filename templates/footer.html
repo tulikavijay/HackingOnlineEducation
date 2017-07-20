@@ -17,10 +17,18 @@ footer{
   <footer>
     <div class="col-md-3 col-sm-3 col-lg-2 col-xs-4">
       <ul>
-        <li>Twitter</li>
-        <li>Facebook</li>
-        <li>Instagram</li>
-        <li>Pininterest</li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">PinInterest</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-4">
+      <ul>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'explore' %}">Online Sources</a></li>
+        <li><a href="{% url 'challenges' %}">Challenges</a></li>
       </ul>
     </div>
     <div class="col-md-3 col-sm-3 col-lg-4 pull-right">

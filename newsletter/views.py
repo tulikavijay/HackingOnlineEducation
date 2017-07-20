@@ -145,6 +145,7 @@ def profile(request):
 def rating(request):
     if request.method=='POST':
         new_rating=0
+        print(request.POST.get('page',''))
         course=request.POST.get('page','')
         category_name=request.POST.get('category_name','')
         rating=request.POST.get('rate','0')
@@ -162,4 +163,4 @@ def rating(request):
             page.rating=new_rating
             page.save()
 
-    return HttpResponse(rating)
+    return HttpResponse('')

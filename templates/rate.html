@@ -65,19 +65,19 @@ label.star:before{
         <div class="stars">
           <form action="{% url 'rating' %}" data-page="{{page.name}}" method="post">{% csrf_token %}
 
-            <input class="star star-5" id="star-5" data-value="5" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}"/>
+            <input class="star star-5" id="star-5" data-rate="5" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="5"/>
             <label class="star star-5" for="star-5"></label>
 
-            <input class="star star-4" id="star-4" data-value="4" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <input class="star star-4" id="star-4" data-rate="4" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="4"/>
             <label class="star star-4" for="star-4"></label>
 
-            <input class="star star-3" id="star-3" data-value="3" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <input class="star star-3" id="star-3" data-rate="3" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="3"/>
             <label class="star star-3" for="star-3"></label>
 
-            <input class="star star-2" id="star-2" data-value="2" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <input class="star star-2" id="star-2" data-rate="2" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="2"/>
             <label class="star star-2" for="star-2"></label>
 
-            <input class="star star-1" id="star-1" data-value="1" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
+            <input class="star star-1" id="star-1" data-rate="1" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="1" />
             <label class="star star-1" for="star-1"></label>
 
             <!-- <input type="submit" value='Submit' class='btn btn-default' style="background:black;color:white;" data-page="{{page.name}}" data-cat="{{category.category_name}}"/> -->

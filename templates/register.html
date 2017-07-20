@@ -22,7 +22,7 @@
 <div class="form_register">
 <div class="heading">Register Here :</div>
   {% include 'userform.html' %}
-  <div class="col-md-4 col-md-offset-4 col-sm-6"><a href="#">already a user?</a></div>
+  <div class="col-md-4 col-md-offset-4 col-sm-6"><a href="{% url 'login' %}">already a user?</a></div>
 </div>
 {% endif %}
 {% endblock %}

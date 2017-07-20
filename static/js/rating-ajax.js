@@ -18,23 +18,39 @@
 //     const rate=$("[data-page]")
 //   }
 // })
-$(document).ready(function(){
+$(document).ready(function(e){
   const forms=document.querySelectorAll(`form`);
    forms.forEach(form=>{form.addEventListener('submit',rating);});
    var rate='';
    var cat='';
    var page='';
-   $('input[type=radio]').on('click',function(){
+   $(`input[type=radio]`).on('click',function(){
+
      console.log(this);
-      rate=$(this).attr("data-rate");
+      rate=$(this).val();
       cat=$(this).attr("data-cat");
       page=$(this).attr("data-page");
+      console.log(rate)
       $(this).closest("form").submit();
+
    });
    function rating(){
-     console.log(rate);
-         $.post('/rate/',{category_name:cat,page:page,rate:rate},function(data){
-           $('.desc').html(data);
-         });
+      e.preventDefault();
+      console.log(rate);
+
+        $.ajax({
+          type:'POST',
+          url:'/rate/',
+          data:{
+            category_name:cat,
+            page:page,
+            rate:rate,
+            csrfmiddlewaretoken:$(`input[name=csrfmiddlewaretoken]`).val()
+          },
+          sucess: function(){
+            $('.desc').html(data);
+          }
+        });
+        e.preventDefault();
    }
 });
