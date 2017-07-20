@@ -1,0 +1,78 @@
+{% load static %}
+<head>
+  <link href={% static "/bootstrap/dist/css/bootstrap.min.css" %} rel="stylesheet">
+  <link href={% static "/bootstrap/dist/fonts/font-awesome.min.css" %} rel="stylesheet" type="text/css">
+<style>
+.carousel-caption{
+  top:50%;
+  transform:translateY(-50%);
+}
+</style>
+</head>
+<body>
+  <div class="carousel slide" id="myCarousel" data-ride="carousel">
+     <!--Indicators-->
+     <ol class="carousel-indicators">
+           <li class="active" data-target="#myCarousel" data-slide-to="0"></li>
+           <li data-target="#myCarousel" data-slide-to="1"></li>
+           <li data-target="#myCarousel" data-slide-to="2"></li>
+     </ol>
+     <!--wrappers for slides-->
+     <div class="carousel-inner">
+       <div class="item active">
+         <img src="{% static 'static_root/6.png' %}" id="clip" >
+         <div class="carousel-caption heading">
+           {% if user.is_authenticated %}
+
+           Choose different courses from different sources<br>
+            <a href="{% url 'explore' %}" class="btn btn-default btn-lg" >  Explore  </a>
+
+             {% else %}
+             All Online Courses in one place with ratings and reviews.Register Now.<br>
+              <a href="{% url 'register' %}" class="btn btn-default btn-lg" >  Register  </a>
+
+           {% endif %}
+         </div>
+       </div>
+
+       <div class="item"><img src="{% static 'static_root/1.png' %}" id="clip" >
+        <div class="carousel-caption heading">
+          {% if user.is_authenticated %}
+
+          Practice to your hearts content
+          <div class="sub-heading" style="color:white">Practice what to learnt from the collection of top-10 challenge sites</div>
+            <a href="{% url 'challenges' %}" class="btn btn-default btn-lg" >  Explore  </a>
+
+            {% else %}
+
+            Choose from different courses from different sources<br>
+             <a href="{% url 'explore' %}" class="btn btn-default btn-lg" >  Explore  </a>
+
+             {% endif %}
+       </div>
+     </div>
+       <div class="item"><img src="{% static 'static_root/2.png' %}" id="clip" >
+         <div class="carousel-caption heading">
+             {% if user.is_authenticated %}
+           View your Profile
+           <div class="sub-heading" style="color:white">Check courses and challenges you added and your recommendations</div>
+             <a href="{% url 'profile' %}" class="btn btn-default btn-lg" >  Profile  </a>
+             {% else %}
+             Practice to your hearts content<br>
+               <a href="{% url 'challenges' %}" class="btn btn-default btn-lg" >  Explore  </a>
+               {% endif %}
+        </div>
+
+       </div>
+     </div>
+
+     <!--Left and right controls -->
+     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+       <span class="glyphicon glyphicon-chevron-left"></span>
+       <span class="sr-only">Previous</span>
+     </a>
+     <a class="right carousel-control" href="#myCarousel" data-slide="next">
+       <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+     </a>
+</body>
