@@ -29,11 +29,12 @@ urlpatterns = [
     url(r'^accounts/profile/',views.profile, name='profile'),
     # url(r'^accounts/profile/edit/',views.edit_profile, name='edit_profile'),
     # url(r'^accounts/profile/password/',views.change_password, name='change_password'),
+    url(r'^courses/rating/(?P<category_name>.+)/$',views.rating_courses, name='rating_courses'),
     url(r'^login/',auth_views.login, name='login'),
     url(r'^accounts/logout/',auth_views.logout, name='logout'),
     url(r'^explore/',views.explore, name='explore'),
     url(r'^courses/(?P<category_name>.+)/$',views.category, name='category'),
-    url(r'^courses/rating/(?P<category_name>.+)/$',views.rating, name='rating_courses'),
+    url(r'^rate/',views.rating, name='rating'),
     url(r'^challenges/',views.challenges, name='challenges'),
 ]
 

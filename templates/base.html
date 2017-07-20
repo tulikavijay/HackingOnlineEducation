@@ -65,6 +65,70 @@ body{
   background: grey;
   border:0px solid;
 }
+@media only screen and (max-width:959px){
+  .carousel-inner{
+    width:100%;
+    height:500px !important;
+  }
+
+}
+@media only screen and (max-width:919px){
+
+  .carousel-inner{
+    width:100%;
+    height:400px !important;
+  }
+  #clip{
+   position:absolute;
+   clip:rec(100px,100px,100px,100px);
+  }
+}
+@media only screen and (max-width:767px){
+  .carousel-inner{
+    width:100%;
+    height:400px !important;
+  }
+  #clip{
+    width:100%;
+    height:400px;
+  }
+}
+@media only screen and (max-width:480px){
+  .heading{
+    font-size: 28px;
+  }
+  .sub-heading{
+    font-size:20px;
+  }
+  .carousel-inner{
+    width:100%;
+    height:300px !important;
+  }
+  #clip{
+    position:absolute;
+    clip:rec(100px,200px,100px,300px);
+  }
+}
+@media only screen and (max-width:479px){
+  .heading{
+    font-size: 20px;
+  }
+  .sub-heading{
+    font-size:16px;
+  }
+  img{
+    width:200px;
+    height: 200px;
+  }
+  .carousel-inner{
+    width:100%;
+    height:300px !important;
+  }
+  #clip{
+    position:absolute;
+    clip:rec(100px,300px,100px,300px);
+  }
+}
 {% block style %}
 {% endblock %}
 </style>
@@ -82,8 +146,7 @@ body{
 {% include "footer.html" %}
 <script src={% static "/bootstrap/dist/js/bootstrap.js" %}></script>
 <script src={% static "/bootstrap/dist/js/bootstrap.min.js" %}></script>
-<script src={% static "/js/jquery-3.1.1.js" %}></script>
-<script src={% static "/js/rating-ajax.js" %}></script>
+
 
 </body>
 </html>

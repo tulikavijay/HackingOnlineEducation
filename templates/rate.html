@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block style %}
 img{
   display: block;
@@ -49,6 +50,7 @@ label.star:before{
   font-family:'FontAwesome';
 }
 {% endblock %}
+<body>
 {% block content %}
 <div class="base container">
   <div class="sub-heading">Rate and Review:</div>
@@ -61,7 +63,8 @@ label.star:before{
       <a href="{{page.url}}" target="_blank">{{page.name}}</a></div>
       <div class="pull-right">
         <div class="stars">
-          <form action="">{% csrf_token %}
+          <form action="{% url 'rating' %}" data-page="{{page.name}}" method="post">{% csrf_token %}
+
             <input class="star star-5" id="star-5" data-value="5" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}"/>
             <label class="star star-5" for="star-5"></label>
 
@@ -76,7 +79,11 @@ label.star:before{
 
             <input class="star star-1" id="star-1" data-value="1" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" />
             <label class="star star-1" for="star-1"></label>
+
+            <!-- <input type="submit" value='Submit' class='btn btn-default' style="background:black;color:white;" data-page="{{page.name}}" data-cat="{{category.category_name}}"/> -->
+
           </form>
+          <div class="desc"></div>
         </div>
     </div>
   </div>
@@ -88,4 +95,8 @@ label.star:before{
    {% endif %}
   </div>
 </div>
+<script src={% static "/js/jquery-3.1.1.js" %}></script>
+<script src={% static "/js/rating-ajax.js" %}></script>
 {% endblock %}
+
+</body>

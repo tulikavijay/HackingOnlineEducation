@@ -6,9 +6,11 @@ from django.contrib.auth import login, authenticate,logout,update_session_auth_h
 from django.shortcuts import render
 from .forms import SignUpForm,UserForm,UserProfileForm
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+from django.http import HttpResponse
 #from django.contrib.auth.forms import UserChangeForm,PasswordChangeForm
 #importing models
-from .models import UserProfile,Categories,Pages
+from .models import UserProfile,Categories,Pages,Course,StandAlone,Challenge
 # Create your views here.
 def home(request):
     challenges=Categories.objects.filter(sort='challenges').order_by('-rating')[:4]
@@ -119,7 +121,7 @@ def category(request,category_name):
 
 @login_required
 
-def rating(request,category_name):
+def rating_courses(request,category_name):
     model=Pages
     category=Categories.objects.get(category_name=category_name)
     pages=Pages.objects.filter(category=category)
@@ -139,3 +141,25 @@ def profile(request):
     'userprofile':userprofile
     }
     return render(request,'dashboard.html',context)
+
+def rating(request):
+    if request.method=='POST':
+        new_rating=0
+        course=request.POST.get('page','')
+        category_name=request.POST.get('category_name','')
+        rating=request.POST.get('rate','0')
+        print(course,category_name,rating)
+        user=User.objects.get(username=request.user)
+        if rating and course :
+            course=Course.create(
+            user=user,
+            course=course,
+            timestamp=datetime.now()
+            )
+            category=Categories.objects.get(category_name=category_name)
+            page=Pages.objects.get(category=category,name=course)
+            new_rating=((page.rating)+int(rating))/2
+            page.rating=new_rating
+            page.save()
+
+    return HttpResponse(rating)
