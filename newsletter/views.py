@@ -11,7 +11,7 @@ from django.http import HttpResponse
 #from django.contrib.auth.forms import UserChangeForm,PasswordChangeForm
 #importing models
 from .models import UserProfile,Categories,Pages,Course,StandAlone,Challenge
-from star_ratings.models import Rating
+from star_ratings.models import Rating,UserRating
 # Create your views here.
 def home(request):
     challenges=Categories.objects.filter(sort='challenges',ratings__isnull=False).order_by('-ratings__average')[:4]
@@ -136,10 +136,12 @@ def rating_courses(request,category_name):
 def profile(request):
     #user=get_object_or_404(User,user_username=self.kwargs['username'])
     model=UserProfile
+    courses=UserRating.objects.filter(user=request.user)
     userprofile=UserProfile.objects.get(user=request.user)
     context={
     'user':request.user,
-    'userprofile':userprofile
+    'userprofile':userprofile,
+    'courses':courses
     }
     return render(request,'dashboard.html',context)
 
