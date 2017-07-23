@@ -16,6 +16,8 @@ img{
   font-family:'Lato';
   font-size:18px;
   color:gray;
+  padding-left:10px;
+  padding-right:10px;
 }
 
 {% endblock %}
@@ -28,11 +30,11 @@ img{
     {% if pages %}
     <ul class="list-group" style="list-style-type:none;">
     {% for page in pages %}
-    <li class="list-group-item item"><div class="row"><div class="pull-left">
+    <li class="list-group-item item "><div class="row"><div class="">
       <a href="{{page.url}}" target="_blank">{{page.name}}</a></div>
-      <div class="pull-right">
+      <div class="pull-right" style="width:120px;">
         <div class="stars">
-              {% ratings page %}
+              {% ratings page 20 20 %}
           <div class="desc"></div>
         </div>
     </div>

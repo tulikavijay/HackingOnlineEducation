@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load ratings %}
 {% block style %}
 .hero{
   filter: grayscale(70%);
@@ -98,12 +99,13 @@ font-family:'Lato';
               <img src={{category.image.url}} height='250px' width='250px'></a>
 
               <div style="text-align:center;padding-top:10px;">
-              {% with ''|center:category.rating as range %}
+              <!-- {% with ''|center:category.rating as range %}
                {% for _ in range %}
               <span>&#9733</span>
 
               {% endfor %}
-            {% endwith %}
+            {% endwith %} -->
+            {% ratings category 12 12 True %}
           </div>
                 <div class="desc" style="padding-top:10px; width:250px;"><p>{{category.description}}</p></div>
        </div>
@@ -124,12 +126,13 @@ font-family:'Lato';
             <li class="list-group-item" >
                 <a href="{{page.url}}" target="_blank">{{page.name}}</a><br>
                 <div style="text-align:left;padding-top:10px;">
-                {% with ''|center:page.rating as range %}
+                <!-- {% with ''|center:page.rating as range %}
                  {% for _ in range %}
                 <span>&#9733</span>
 
                 {% endfor %}
-              {% endwith %}
+              {% endwith %} -->
+              {% ratings page 12 12 True %}
             </div>
                 {{page.category}}
             </li>
@@ -157,12 +160,13 @@ font-family:'Lato';
            <a href="{{challenge.url}}" target="_blank">
               <img src={{challenge.image.url}} height='200px' width='200px' style="border:0px solid;border-radius:100%;"></a>
               <div style="text-align:center;padding-top:10px;">
-              {% with ''|center:challenge.rating as range %}
+              <!-- {% with ''|center:challenge.rating as range %}
                {% for _ in range %}
               <span>&#9733</span>
 
               {% endfor %}
-            {% endwith %}
+            {% endwith %} -->
+            {% ratings challenge 12 12 True %}
           </div>
               <div class="desc" style="padding-top:10px; width:200px; text-align:center;"><p>{{challenge.description}}</p></div>
        </div>

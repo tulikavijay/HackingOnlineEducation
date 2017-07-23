@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
+{% load ratings %}
 {% block style %}
-img{
-  display: block;
-  margin:auto;
-  border: 0px solid;
-  box-shadow:1px 2px 3px grey;
-}
 .base{
   padding-top:50px;
   padding-bottom:80px;
@@ -15,10 +10,8 @@ img{
   font-size:18px;
   color:gray;
 }
-.rating > span:hover:before{
-  content:"\2605";
-  position:absolute;
-}
+
+
 {% endblock %}
 {% block content %}
 <div class="base container">
@@ -26,7 +19,8 @@ img{
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
     <a href={{category.url}}>  <img src={{category.image.url}} height="280px" width="270px"></a>
-    <div class="desc" style="padding-top:20px; width:270px;"><p>{{category.description}}</p></div>
+    <div style="text-align:center;padding-top:20px;">{% ratings category 15 15 True %}</div>
+    <div class="desc" style="padding-top:10px; width:270px;"><p>{{category.description}}</p></div>
   </div>
   <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
     {% if user.is_authenticated %}
@@ -39,12 +33,13 @@ img{
     <li class="list-group-item item"><div class="row"><div class="pull-left">
       <a href="{{page.url}}" target="_blank">{{page.name}}</a></div>
       <div class="pull-right">
-        {% with ''|center:page.rating as range %}
+        <!-- {% with ''|center:page.rating as range %}
          {% for _ in range %}
         <span>&#9733</span>
 
         {% endfor %}
-      {% endwith %}
+      {% endwith %} -->
+      {% ratings page 15 15 True %}
     </div>
   </div>
     </li>

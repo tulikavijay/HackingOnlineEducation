@@ -11,12 +11,13 @@ from django.http import HttpResponse
 #from django.contrib.auth.forms import UserChangeForm,PasswordChangeForm
 #importing models
 from .models import UserProfile,Categories,Pages,Course,StandAlone,Challenge
+from star_ratings.models import Rating
 # Create your views here.
 def home(request):
-    challenges=Categories.objects.filter(sort='challenges').order_by('-rating')[:4]
+    challenges=Categories.objects.filter(sort='challenges',ratings__isnull=False).order_by('-ratings__average')[:4]
     standalones=Categories.objects.filter(sort='standalones')
-    category_list = Categories.objects.filter(sort='courses').order_by('-rating')[:4]
-    pages=Pages.objects.order_by('-rating')[:5]
+    category_list = Categories.objects.filter(sort='courses',ratings__isnull=False).order_by('-ratings__average')[:4]
+    pages=Pages.objects.order_by('-ratings__average')[:5]
     context = {
      'categories': category_list,
      'challenges':challenges,
@@ -27,7 +28,7 @@ def home(request):
     return render(request,'home.html',context)
 
 def challenges(request):
-    challenges=Categories.objects.filter(sort='challenges').order_by('-rating')
+    challenges=Categories.objects.filter(sort='challenges').order_by('-ratings__average')
     context={
     'challenges':challenges
     }
@@ -102,7 +103,7 @@ def contact(request):
 
 def explore(request):
     model=Categories
-    categories=Categories.objects.filter(sort='courses')
+    categories=Categories.objects.filter(sort='courses').order_by('-ratings__average')
     context={
     'categories':categories
     }
