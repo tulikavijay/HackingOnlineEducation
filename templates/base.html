@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load ratings %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +9,8 @@
 
 <link href={% static "/bootstrap/dist/css/bootstrap.min.css" %} rel="stylesheet">
 <link href={% static "/bootstrap/dist/fonts/font-awesome.min.css" %} rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Lato|Oxygen|Poiret+One|Quicksand|Raleway');
 body{

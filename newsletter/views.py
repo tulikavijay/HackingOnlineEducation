@@ -142,25 +142,25 @@ def profile(request):
     }
     return render(request,'dashboard.html',context)
 
-def rating(request):
-    if request.method=='POST':
-        new_rating=0
-        print(request.POST.get('page',''))
-        course=request.POST.get('page','')
-        category_name=request.POST.get('category_name','')
-        rating=request.POST.get('rate','0')
-        print(course,category_name,rating)
-        user=User.objects.get(username=request.user)
-        if rating and course :
-            course=Course.create(
-            user=user,
-            course=course,
-            timestamp=datetime.now()
-            )
-            category=Categories.objects.get(category_name=category_name)
-            page=Pages.objects.get(category=category,name=course)
-            new_rating=((page.rating)+int(rating))/2
-            page.rating=new_rating
-            page.save()
-
-    return HttpResponse('')
+# def rating(request):
+#     if request.method=='POST':
+#         new_rating=0
+#         print(request.POST.get('page',''))
+#         course=request.POST.get('page','')
+#         category_name=request.POST.get('category_name','')
+#         rating=request.POST.get('rate','0')
+#         print(course,category_name,rating)
+#         user=User.objects.get(username=request.user)
+#         if rating and course :
+#             course=Course.create(
+#             user=user,
+#             course=course,
+#             timestamp=datetime.now()
+#             )
+#             category=Categories.objects.get(category_name=category_name)
+#             page=Pages.objects.get(category=category,name=course)
+#             new_rating=((page.rating)+int(rating))/2
+#             page.rating=new_rating
+#             page.save()
+#
+#     return HttpResponse('')

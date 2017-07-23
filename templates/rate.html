@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load ratings %}
 {% block style %}
 img{
   display: block;
@@ -16,39 +17,7 @@ img{
   font-size:18px;
   color:gray;
 }
-div.stars{
-  width:270px;
-  display:inline-block;
-}
-input.star{
-  display:none;
-}
-label.star{
-  float:right;
-  padding:10px;
-  font-size:10px;
-  color:#444;
-  transition:all .2s;
-}
-input.star:checked ~ label.star:before{
-  content:'\f005';
-  color:#FD4;
-  transition:all .25s;
-}
-input.star-5:checked ~ label.star:before{
 
-  color:#FE7;
-}
-input.star-1:checked ~ label.star:before{
-  color:#F62;
-}
-label.star:hover{
-  transform:rotate(-15deg) scale(1.2);
-}
-label.star:before{
-  content:'\f006';
-  font-family:'FontAwesome';
-}
 {% endblock %}
 <body>
 {% block content %}
@@ -63,26 +32,7 @@ label.star:before{
       <a href="{{page.url}}" target="_blank">{{page.name}}</a></div>
       <div class="pull-right">
         <div class="stars">
-          <form action="{% url 'rating' %}" data-page="{{page.name}}" method="post">{% csrf_token %}
-
-            <input class="star star-5" id="star-5" data-rate="5" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="5"/>
-            <label class="star star-5" for="star-5"></label>
-
-            <input class="star star-4" id="star-4" data-rate="4" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="4"/>
-            <label class="star star-4" for="star-4"></label>
-
-            <input class="star star-3" id="star-3" data-rate="3" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="3"/>
-            <label class="star star-3" for="star-3"></label>
-
-            <input class="star star-2" id="star-2" data-rate="2" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="2"/>
-            <label class="star star-2" for="star-2"></label>
-
-            <input class="star star-1" id="star-1" data-rate="1" type="radio" data-cat="{{category.category_name}}" data-page="{{page.name}}" value="1" />
-            <label class="star star-1" for="star-1"></label>
-
-            <!-- <input type="submit" value='Submit' class='btn btn-default' style="background:black;color:white;" data-page="{{page.name}}" data-cat="{{category.category_name}}"/> -->
-
-          </form>
+              {% ratings page %}
           <div class="desc"></div>
         </div>
     </div>
@@ -96,7 +46,7 @@ label.star:before{
   </div>
 </div>
 <script src={% static "/js/jquery-3.1.1.js" %}></script>
-<script src={% static "/js/rating-ajax.js" %}></script>
+
 {% endblock %}
 
 </body>
