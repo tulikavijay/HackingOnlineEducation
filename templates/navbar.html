@@ -49,7 +49,7 @@ button > span{
                           </button>
       <a href="{% url 'home' %}" class="navbar-brand">Start here!</a>
     </div>
-    <div class="navbar-collapse collapse  navbar-right" id="nav">
+    <div class="navbar-collapse collapse" id="nav">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
         {% if user.is_authenticated %}
@@ -65,7 +65,15 @@ button > span{
           <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
         {% endif %}
       </ul>
-    </div>
+      <div class="pull-right" style="padding-top:10px;">
+        <form method="get" action='' class="form-inline">
+           <div class="input-group">
+          <input type="search" class="form-control col-3" name="q" value="{{request.GET.q}}" placeholder="Search"/>
+          <span class="input-group-btn"><button class="btn btn-secondary" type="button">Go!</button></span>
+        </div>
+        </form>
+      </div>
+      </div>
     </div>
   </nav>
 </div>

@@ -14,17 +14,23 @@ from .models import UserProfile,Categories,Pages,Course,StandAlone,Challenge
 from star_ratings.models import Rating,UserRating
 # Create your views here.
 def home(request):
+    query=request.GET.get("q")
+    context={}
+    if query:
+        search=Pages.objects.filter(name=query)
+        context.update({'search':search})
     challenges=Categories.objects.filter(sort='challenges',ratings__isnull=False).order_by('-ratings__average')[:4]
     standalones=Categories.objects.filter(sort='standalones')
     category_list = Categories.objects.filter(sort='courses',ratings__isnull=False).order_by('-ratings__average')[:4]
     pages=Pages.objects.order_by('-ratings__average')[:5]
-    context = {
+    added = {
      'categories': category_list,
      'challenges':challenges,
      'standalones':standalones,
      'title':'Welcome',
      'pages':pages,
     }
+    context.update(added)
     return render(request,'home.html',context)
 
 def challenges(request):
