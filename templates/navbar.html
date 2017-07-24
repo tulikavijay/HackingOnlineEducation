@@ -34,6 +34,38 @@ button > span{
   color:black;
   background-color: black;
 }
+@media only screen and (max-width:1310px){
+  input .form-control{
+    width:560px;
+  }
+  div .input-group{
+      width:560px;
+  }
+}
+@media only screen and (max-width:1024px){
+  input .form-control{
+    width:320px;
+  }
+  div .input-group{
+      width:320px;
+  }
+}
+@media only screen and (max-width:764px){
+  input .form-control{
+    width:300px;
+  }
+  div .input-group{
+      width:300px;
+  }
+}
+@media only screen and (max-width:484px){
+  input .form-control{
+    width:250px;
+  }
+  div .input-group{
+      width:250px;
+  }
+}
 </style>
   </head>
 <body>
@@ -65,10 +97,10 @@ button > span{
           <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
         {% endif %}
       </ul>
-      <div class="pull-right" style="padding-top:10px;">
+      <div class="pull-right col-lg-5 col-md-5" style="padding-top:10px;">
         <form method="get" action='' class="form-inline">
            <div class="input-group">
-          <input type="search" class="form-control col-3" name="q" value="{{request.GET.q}}" placeholder="Search"/>
+          <input type="search" class="form-control" name="q" value="{{request.GET.q}}" placeholder="Search"/>
           <span class="input-group-btn"><button class="btn btn-secondary" type="button">Go!</button></span>
         </div>
         </form>
