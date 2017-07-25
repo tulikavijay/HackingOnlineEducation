@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^courses/(?P<category_name>.+)/$',views.category, name='category'),
     url(r'^challenges/',views.challenges, name='challenges'),
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
+    url(r'^search/',views.search, name='search'),
 
 ]
 

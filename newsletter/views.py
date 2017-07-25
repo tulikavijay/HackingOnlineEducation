@@ -14,11 +14,7 @@ from .models import UserProfile,Categories,Pages,Course,StandAlone,Challenge
 from star_ratings.models import Rating,UserRating
 # Create your views here.
 def home(request):
-    query=request.GET.get("q")
     context={}
-    if query:
-        search=Pages.objects.filter(name=query)
-        context.update({'search':search})
     challenges=Categories.objects.filter(sort='challenges',ratings__isnull=False).order_by('-ratings__average')[:4]
     standalones=Categories.objects.filter(sort='standalones')
     category_list = Categories.objects.filter(sort='courses',ratings__isnull=False).order_by('-ratings__average')[:4]
@@ -125,6 +121,27 @@ def category(request,category_name):
     'pages':pages,
     }
     return render(request,'category.html',context)
+
+def search(request):
+    query=request.GET.get("q")
+    searchc={}
+    searchp=Pages.objects.filter(name=query).order_by('-ratings__average')
+    context={
+    'searchp':searchp
+    }
+    if not searchp :
+        try :
+            searchc=Categories.objects.get(category_name=query)
+            context.update({'searchc':searchc})
+        except :
+            pass
+        else :
+            pass
+
+    if not searchc and not searchp :
+        context.update({'search':'Query Not Found'})
+
+    return render(request,'search.html',context)
 
 @login_required
 

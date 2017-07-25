@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load ratings %}
+{% block content %}
+{% if searchp %}
+    {% for search in searchp %}
+      <div class="heading">{{search.name}}</div>
+      <div class="sub-heading" style="padding-bottom:10px;">{{search.url}}</div>
+      <div class="sub-heading">{% ratings search 15 15 True %}</div>
+    {% endfor %}
+{% endif %}
+{% if searchc %}
+      <div class="heading">{{searchc.category_name}}</div>
+      <div class="sub-heading" style="padding-bottom:10px;">{{searchc.url}}</div>
+      <div class="sub-heading">{% ratings searchc 15 15 True %}</div>
+{% endif %}
+{% if search %}
+ <div>{{search}}</div>
+{% endif %}
+{% endblock %}

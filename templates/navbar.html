@@ -98,10 +98,10 @@ button > span{
         {% endif %}
       </ul>
       <div class="pull-right col-lg-5 col-md-5" style="padding-top:10px;">
-        <form method="get" action='' class="form-inline">
+        <form method="get" action='/search/' class="form-inline">
            <div class="input-group">
           <input type="search" class="form-control" name="q" value="{{request.GET.q}}" placeholder="Search"/>
-          <span class="input-group-btn"><button class="btn btn-secondary" type="button">Go!</button></span>
+          <span class="input-group-btn"><input type="submit" class="btn btn-secondary">Go!</span>
         </div>
         </form>
       </div>
