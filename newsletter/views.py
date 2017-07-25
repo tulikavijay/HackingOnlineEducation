@@ -125,13 +125,13 @@ def category(request,category_name):
 def search(request):
     query=request.GET.get("q")
     searchc={}
-    searchp=Pages.objects.filter(name=query).order_by('-ratings__average')
+    searchp=Pages.objects.filter(name__iexact=query).order_by('-ratings__average')
     context={
     'searchp':searchp
     }
     if not searchp :
         try :
-            searchc=Categories.objects.get(category_name=query)
+            searchc=Categories.objects.get(category_name__iexact=query)
             context.update({'searchc':searchc})
         except :
             pass
