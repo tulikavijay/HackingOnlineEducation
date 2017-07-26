@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block style %}
 .form_signup{
-  padding-top:80px;
-  padding-bottom:100px;
+  padding-top:100px;
+  padding-bottom:200px;
 }
 {% endblock %}
 
 {% block content %}
 <div class="form_signup">
 <div class="heading">  {{title}}</div>
-{% include 'forms.html' %}
+ {% if form %}
+ {% include 'forms.html' %}
+ {% endif %}
 </div>
 {% endblock %}

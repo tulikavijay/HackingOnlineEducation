@@ -71,13 +71,7 @@ font-family:'Lato';
         <a href="{% url 'register' %}" class="btn btn-default btn-lg" >  Register  </a>
       {% endif %}
       </div> -->
-      {% if search %}
-      <div class="card">
-        <div class="card-block">
-         {{search.name}}
-        </div>
-      </div>
-      {% endif %}
+      
       {% include 'carousel.html' %}
 
    </div>
