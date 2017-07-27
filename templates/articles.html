@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if stories %}
+{% for story in stories %}
+  <div class="heading">{{story.title}}</div>
+  <div class="sub-heading">{{story.by}}</div>
+  <div class="desc"><a href="{{story.url}}">{{story.url}}</a></div>
+{% endfor %}
+{% endif %}
+{% endblock %}

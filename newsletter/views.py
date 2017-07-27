@@ -14,6 +14,8 @@ from .models import UserProfile,Categories,Pages,Course,StandAlone,Challenge
 from star_ratings.models import Rating,UserRating
 # Create your views here.
 def home(request):
+    import ee
+    stories=ee.stories[:6]
     context={}
     challenges=Categories.objects.filter(sort='challenges',ratings__isnull=False).order_by('-ratings__average')[:4]
     standalones=Categories.objects.filter(sort='standalones')
@@ -25,6 +27,7 @@ def home(request):
      'standalones':standalones,
      'title':'Welcome',
      'pages':pages,
+     'stories':stories
     }
     context.update(added)
     return render(request,'home.html',context)
@@ -145,6 +148,12 @@ def search(request):
         context.update({'search':'Query Not Found'})
 
     return render(request,'search.html',context)
+
+def articles(request):
+    import ee
+    stories=ee.stories
+    context={'stories':stories}
+    return render(request,'articles.html',context)
 
 @login_required
 
