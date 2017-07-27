@@ -11,7 +11,7 @@
 }
 
 .title{
-  font-family:'Lato';
+  font-family:'Oxygen';
   height:100%;
   font-size:48px;
   color:white;
@@ -48,8 +48,7 @@ img{
 
 .top-pages{
 font-size:18px;
-padding-top:60px;
-
+padding-top:38px;
 font-family:'Lato';
 }
 
@@ -58,20 +57,7 @@ font-family:'Lato';
 
    {% block content %}
    <div class="container-fluid hero">
-    <!-- <div class="title">
-      {% if user.is_authenticated %}
-             Explore Different Topics from different sources
-             <a href="{% url 'explore' %}" class="btn btn-default btn-lg" >  Explore  </a>
-      {% else %}
-      {{title}}
-      <div class="sub-heading" style="color:white">
-        All Online Courses in one place with ratings and reviews. Just click on the register button to open
-        a free account.
-      </div>
-        <a href="{% url 'register' %}" class="btn btn-default btn-lg" >  Register  </a>
-      {% endif %}
-      </div> -->
-      
+
       {% include 'carousel.html' %}
 
    </div>
@@ -82,10 +68,11 @@ font-family:'Lato';
 
 
  <div class="categories container">
-   <div class="heading">Pick Your Next Course</div>
+
    <div class="row">
    <div class="box container col-lg-8 col-md-8 col-sm-12 col-xs-12">
    <div class="row">
+      <div class="heading" style="padding-bottom:30px;">Pick Your Next Course</div>
    {% if categories %}
      {% for category in categories %}
        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:30px;padding-bottom:30px;">
@@ -93,12 +80,7 @@ font-family:'Lato';
               <img src={{category.image.url}} height='250px' width='250px'></a>
 
               <div style="text-align:center;padding-top:10px;">
-              <!-- {% with ''|center:category.rating as range %}
-               {% for _ in range %}
-              <span>&#9733</span>
 
-              {% endfor %}
-            {% endwith %} -->
             {% ratings category 12 12 True %}
           </div>
                 <div class="desc" style="padding-top:10px; width:250px;"><p>{{category.description}}</p></div>
@@ -114,22 +96,17 @@ font-family:'Lato';
  </div>
   </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 top-pages">
-
+      <div class="heading" style="padding-bottom:45px;">Top courses</div>
       {% if pages %}
          <ul style="list-style-type:none" class="list-group">
           {% for page in pages %}
             <li class="list-group-item" >
                 <a href="{{page.url}}" target="_blank">{{page.name}}</a><br>
                 <div style="text-align:left;padding-top:10px;">
-                <!-- {% with ''|center:page.rating as range %}
-                 {% for _ in range %}
-                <span>&#9733</span>
 
-                {% endfor %}
-              {% endwith %} -->
               {% ratings page 12 12 True %}
             </div>
-                {{page.category}}
+              <a href="{{page.category.url}}">  {{page.category}}</a>
             </li>
           {% endfor %}
       {% endif %}
@@ -140,27 +117,20 @@ font-family:'Lato';
 
 <hr style="width:70%;margin:auto;color:dark-gray;height:1px;">
 
- <div class="categories">
-   <div class="heading">Challenge Yourself!</div>
-   <!--<div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6"></div>
-   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>
-   <div class="category col-lg-3 col-lg-offset-3 col-md-4 col-sm-4 col-xs-6" ></div>
-   <div class="category col-lg-3 col-md-4 col-sm-4 col-xs-6"></div>-->
 
+<div class="categories">
    <div class="box container">
    <div class="row">
+    <div class="box container col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="heading" style="padding-bottom:30px;">Challenge Yourself!</div>
    {% if challenges %}
      {% for challenge in challenges %}
        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding-top:30px;padding-bottom:30px;">
            <a href="{{challenge.url}}" target="_blank">
               <img src={{challenge.image.url}} height='200px' width='200px' style="border:0px solid;border-radius:100%;"></a>
               <div style="text-align:center;padding-top:10px;">
-              <!-- {% with ''|center:challenge.rating as range %}
-               {% for _ in range %}
-              <span>&#9733</span>
 
-              {% endfor %}
-            {% endwith %} -->
             {% ratings challenge 12 12 True %}
           </div>
               <div class="desc" style="padding-top:10px; width:200px; text-align:center;"><p>{{challenge.description}}</p></div>
@@ -170,12 +140,29 @@ font-family:'Lato';
    {% else %}
    <div class="sub-heading">There are no categories</div>
    {% endif %}
+ </div>
+ </div>
+   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 top-pages" font-face='Raleway'>
+      <div class="heading" style="padding-bottom:45px;">NewsFeed</div>
+     {% if stories %}
+        <ul style="list-style-type:none" class="list-group">
+         {% for story in stories %}
+           <li class="list-group-item" >
+               <a href="{{story.url}}" target="_blank">{{story.title}}</a><br>
+               <div style="text-align:left;padding-top:10px;font-family:'Lato'">
 
+               by : {{story.by}}
+           </div>
+               {{story.type}}
+           </li>
+         {% endfor %}
+     {% endif %}
+   </div>
  </div>
   </div>
  <div class="sub-heading"><p><a href="{% url 'challenges' %}">Click here for all Sources</a></p></div>
+</div>
 
- </div>
 
  <div class="center signup">
    <div class="heading" style="color:white;">Sign Up for our Newsletter</div>

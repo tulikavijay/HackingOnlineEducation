@@ -91,7 +91,7 @@ button > span{
 
          <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         {% endif %}
-        <li><a href=#><span class="glyphicon glyphicon-list-alt"></span> About</a></li>
+        <li><a href="{% url 'articles' %}"><span class="glyphicon glyphicon-list-alt"></span> Articles</a></li>
         <li><a href="{% url 'contact' %}"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
