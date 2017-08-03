@@ -29,10 +29,6 @@
   background:purple;
   filter: grayscale(70%);
 }
-.enroll{
-  padding-bottom:150px;
-  padding-top:100px;
-}
 .signup{
   background:url({% static 'static_root/3.png' %});
   filter: grayscale(70%);
@@ -43,7 +39,10 @@
   border: 0px solid;
   box-shadow:1px 2px 3px grey;
 }
-
+.enroll{
+  padding-bottom:150px;
+  padding-top:100px;
+}
 .top-pages{
 font-size:18px;
 padding-top:38px;
@@ -174,10 +173,12 @@ font-family:'Lato';
     <div class="heading" style="padding-top:0px;margin-top:0px">
       Get Started Now!</div>
       <div class="sub-heading">Add courses to your profile and manage progress</div>
+
       <div><a href="{% url 'enroll' %}" class="btn btn-default" style="color:white;background:#85428a;display:block;margin:10px auto;
         width:30%;">Enroll</a>
-       </div>
+
   </div>
+</div>
 </div>
 
 <!--signup link-->

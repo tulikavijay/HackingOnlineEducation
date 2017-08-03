@@ -4,7 +4,8 @@
 {% load ratings %}
 {% block style %}
 .box{
-  padding-bottom:100px;
+  padding-bottom:150px;
+  padding-top:100px;
   display:flex;
   justify-content:space-around;
   flex-wrap:wrap;
@@ -14,6 +15,15 @@ img{
   display:block;
   margin:0px auto;
 }
+.card-block{
+  padding-top:20px;
+}
+li{
+  display:flex;
+  justify-content:space-around;
+  padding-bottom:10px;
+}
+
 {% endblock %}
 {% block content %}
 <div class="container box">
@@ -27,13 +37,24 @@ img{
               <a href='{{category.url}}' target="_blank"> Visit here! </a>
             </div>
             <div class="card-block">
-
-              {% for page in category.category.all %}
-                    <div class="desc">{{page.name}}</div>
-              {% endfor %}
-
+            <ul class="list-group">
+             {% for page in category.category.all %}
+            <li class="row">
+            <div>
+              <div class="desc">{{page.name}}</div>
             </div>
-       </div>
+              <div>
+              <form action='' method="post">{% csrf_token %}
+               <input type="submit" value="add" class="btn btn-default btn-sm"/>
+              </form>
+            </div>
+
+            </li>
+                {% endfor %}
+            </div>
+            </ul>
+          </div>
+
   {% endfor %}
  {% endif %}
 </div>
