@@ -37,7 +37,7 @@ class Categories(models.Model):
         return self.category_name
 
 class Pages(models.Model):
-    category=models.ForeignKey(Categories,on_delete=models.CASCADE,null=True)
+    category=models.ForeignKey(Categories,on_delete=models.CASCADE,null=True,related_name='category')
     name=models.CharField(max_length=30,null=False)
     rating=models.IntegerField()
     url=models.URLField()
