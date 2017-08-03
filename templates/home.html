@@ -173,10 +173,13 @@ font-family:'Lato';
     <div class="heading" style="padding-top:0px;margin-top:0px">
       Get Started Now!</div>
       <div class="sub-heading">Add courses to your profile and manage progress</div>
-
+      {% if user.is_authenticated %}
       <div><a href="{% url 'enroll' %}" class="btn btn-default" style="color:white;background:#85428a;display:block;margin:10px auto;
         width:30%;">Enroll</a>
-
+      {% else %}
+      <div><a href="{% url 'login' %}" class="btn btn-default" style="color:white;background:#85428a;display:block;margin:10px auto;
+        width:30%;">Enroll</a>
+        {% endif %}
   </div>
 </div>
 </div>
