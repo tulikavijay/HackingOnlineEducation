@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 {% load ratings %}
 {% block style %}
-.mid{
-  margin: 60px auto;
-  width:50%;
+
+img{
+  display:block;
+  margin:0px auto;
+}
+.no_query{
+  margin: 200px auto;
+  width:30%;
 }
 {% endblock %}
 {% block content %}
+<div class="box">
 {% if searchp %}
     {% for search in searchp %}
        <div class="mid">
-        <div class="card" style="width: 20rem;">
-      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card" >
+          <img class="img-responsive" src="{{search.category.image.url}}" alt="Card image cap">
       <div class="card-block">
         <h4 class="card-title">{{search.name}}</h4>
         <p class="card-text">{% ratings search 15 15 True %}
            <br>
           {{search.category.category_name}}</p>
-        <a href='{{search.url}' target="_blank"> Visit here! </a>
+        <a href='{{search.url}}' target="_blank"> Visit here! </a>
       </div>
     </div>
   </div>
@@ -27,7 +33,8 @@
     {% endfor %}
 {% endif %}
 {% if searchc %}
-      <div class="card" style="width: 20rem;">
+     <div class="mid">
+      <div class="card" >
       <img class="img-responsive" src="{{searchc.image.url}}" alt="Card image cap">
       <div class="card-block">
       <h4 class="card-title">{{searchc.category_name}}</h4>
@@ -36,12 +43,14 @@
         {{searchc.description}}</p>
       <a href="{{searchc.url}" target="_blank">Visit here!</a>
       </div>
+    </div>
       <!-- </div>
       <div class="heading">{{searchc.category_name}}</div>
       <div class="sub-heading" style="padding-bottom:10px;">{{searchc.url}}</div>
       <div class="sub-heading">{% ratings searchc 15 15 True %}</div> -->
 {% endif %}
 {% if search %}
- <div>{{search}}</div>
+ <div class="no_query sub-heading">{{search}}</div>
 {% endif %}
+</div>
 {% endblock %}

@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="box">
 {% if stories %}
 {% for story in stories %}
-  <div class="heading">{{story.title}}</div>
-  <div class="sub-heading">{{story.by}}</div>
+  <div class="mid card">
+  <div class="sub-heading">{{story.title}}</div>
+  <div class="sub-heading">By : {{story.by}}</div>
   <div class="desc"><a href="{{story.url}}">{{story.url}}</a></div>
+</div>
 {% endfor %}
 {% endif %}
+</div>
 {% endblock %}

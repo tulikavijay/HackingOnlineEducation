@@ -39,12 +39,6 @@ img{
   border: 0px solid;
   box-shadow:1px 2px 3px grey;
 }
-.box{
-  padding-top:40px;
-  padding-right:40px;
-  padding-left:40px;
-  padding-bottom:30px;
-}
 
 .top-pages{
 font-size:18px;
@@ -140,6 +134,7 @@ font-family:'Lato';
    {% else %}
    <div class="sub-heading">There are no categories</div>
    {% endif %}
+   <div class="sub-heading"><p><a href="{% url 'challenges' %}">Click here for all Sources</a></p></div>
  </div>
  </div>
    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 top-pages" font-face='Raleway'>
@@ -160,7 +155,7 @@ font-family:'Lato';
    </div>
  </div>
   </div>
- <div class="sub-heading"><p><a href="{% url 'challenges' %}">Click here for all Sources</a></p></div>
+
 </div>
 
 
