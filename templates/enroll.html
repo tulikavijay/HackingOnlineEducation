@@ -28,9 +28,10 @@ img{
             </div>
             <div class="card-block">
 
-              {% for category in pages.category_name %}
-                    <div class="desc">{{category.name}}</div>
+              {% for page in category.category.all %}
+                    <div class="desc">{{page.name}}</div>
               {% endfor %}
+
             </div>
        </div>
   {% endfor %}
