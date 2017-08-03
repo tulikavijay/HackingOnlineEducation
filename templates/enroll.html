@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load ratings %}
+{% block style %}
+.box{
+  padding-bottom:100px;
+  display:flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+}
+img{
+  width:40%;
+  display:block;
+  margin:0px auto;
+}
+{% endblock %}
+{% block content %}
+<div class="container box">
+ {% if pages %}
+   {% for category in categories %}
+         <div class="card">
+            <img src="{{category.image.url}}" alt="Card image cap">
+            <div class="card-block">
+              <h4 class="card-title">{{category.category_name}}</h4>
+              <p class="card-text">{% ratings category 15 15 True %}<br>
+              <a href='{{category.url}}' target="_blank"> Visit here! </a>
+            </div>
+            <div class="card-block">
+
+              {% for category in pages.category_name %}
+                    <div class="desc">{{category.name}}</div>
+              {% endfor %}
+            </div>
+       </div>
+  {% endfor %}
+ {% endif %}
+</div>
+{% endblock %}

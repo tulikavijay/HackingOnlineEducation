@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
     url(r'^search/',views.search, name='search'),
     url(r'^articles/',views.articles, name='articles'),
+    url(r'^accounts/enroll/',views.enroll, name='enroll'),
 ]
 
 if settings.DEBUG:

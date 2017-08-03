@@ -167,7 +167,7 @@ def rating_courses(request,category_name):
     }
     return render(request,'rate.html',context)
 
-
+@login_required
 def profile(request):
     #user=get_object_or_404(User,user_username=self.kwargs['username'])
     model=UserProfile
@@ -179,6 +179,14 @@ def profile(request):
     'courses':courses
     }
     return render(request,'dashboard.html',context)
+
+@login_required
+def enroll(request):
+    model=Pages
+    categories=Categories.objects.filter(sort='courses' or 'challenges');
+    pages=Pages.objects.all();
+    context={'pages':pages,'categories':categories}
+    return render(request,'enroll.html',context)
 
 # def rating(request):
 #     if request.method=='POST':

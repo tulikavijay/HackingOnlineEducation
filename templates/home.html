@@ -29,11 +29,15 @@
   background:purple;
   filter: grayscale(70%);
 }
+.enroll{
+  padding-bottom:150px;
+  padding-top:100px;
+}
 .signup{
   background:url({% static 'static_root/3.png' %});
   filter: grayscale(70%);
 }
-img{
+.box img{
   display: block;
   margin:auto;
   border: 0px solid;
@@ -159,6 +163,24 @@ font-family:'Lato';
 </div>
 
 
+
+<hr style="width:70%;margin:auto;color:dark-gray;height:1px;">
+<!--for users to add courses-->
+<div class="enroll container">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <img src="{% static '/static_root/images.png' %}">
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="heading" style="padding-top:0px;margin-top:0px">
+      Get Started Now!</div>
+      <div class="sub-heading">Add courses to your profile and manage progress</div>
+      <div><a href="{% url 'enroll' %}" class="btn btn-default" style="color:white;background:#85428a;display:block;margin:10px auto;
+        width:30%;">Enroll</a>
+       </div>
+  </div>
+</div>
+
+<!--signup link-->
  <div class="center signup">
    <div class="heading" style="color:white;">Sign Up for our Newsletter</div>
    <div class="sub-heading" style="color:white;">Get regular updates on your phone and all devices. Just click on the link below</div>
