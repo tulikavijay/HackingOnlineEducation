@@ -188,6 +188,21 @@ def enroll(request):
     context={'pages':pages,'categories':categories}
     return render(request,'enroll.html',context)
 
+@login_required
+def add(request):
+    if request.method=='POST':
+        name=request.POST.get('name','')
+        id=request.POST.get('id','')
+        category=request.POST.get('category','')
+        print('name=',name)
+        user=User.objects.get(username=request.user)
+        if name and category:
+            page_added=Course.create(
+            user=user,
+            course=name,
+            timestamp=datetime.now()
+            )
+    return HttpResponse('')
 # def rating(request):
 #     if request.method=='POST':
 #         new_rating=0

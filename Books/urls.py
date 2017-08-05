@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^search/',views.search, name='search'),
     url(r'^articles/',views.articles, name='articles'),
     url(r'^accounts/enroll/',views.enroll, name='enroll'),
+    url(r'^add/',views.add, name='add'),
 ]
 
 if settings.DEBUG:

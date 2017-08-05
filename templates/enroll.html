@@ -44,8 +44,9 @@ li{
               <div class="desc">{{page.name}}</div>
             </div>
               <div>
-              <form action='' method="post">{% csrf_token %}
-               <input type="submit" value="add" class="btn btn-default btn-sm"/>
+              <form action='' method="post" id="{{page.id}}">{% csrf_token %}
+               <input type="submit" value="add" class="btn btn-default btn-sm"
+               data-name="{{page.name}}" data-id="{{page.id}}" data-source="{{page.category}}"/>
               </form>
             </div>
 
@@ -58,4 +59,32 @@ li{
   {% endfor %}
  {% endif %}
 </div>
+{% endblock %}
+{% block script %}
+const inputs=document.querySelectorAll(`input`);
+const forms=document.querySelectorAll(`form`);
+var id='';
+var name='';
+var category='';
+function add(){
+  $(this).closest("form").submit();
+  id=$(this).attr('data-id');
+  name=$(this).attr('data-name');
+  cat=$(this).attr('data-source');
+}
+function send(e){
+  e.preventDefault();
+  $.post('/add/',
+   {
+     id:id,
+     name:name,
+     category:cat,
+     csrfmiddlewaretoken: '{{ csrf_token }}'
+   }
+  ,function(data){
+    console.log(data);
+  })
+}
+forms.forEach(form=>{addEventListener('submit',send);});
+inputs.forEach(input=>{addEventListener('click',add);});
 {% endblock %}

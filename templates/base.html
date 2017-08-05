@@ -167,9 +167,12 @@ body{
   {% endblock %}
 </div>
 {% include "footer.html" %}
+
 <script src={% static "static_root/bootstrap/dist/js/bootstrap.js" %}></script>
 <script src={% static "static_root/bootstrap/dist/js/bootstrap.min.js" %}></script>
-
-
+<script>
+{% block script %}
+{% endblock %}
+</script>
 </body>
 </html>
