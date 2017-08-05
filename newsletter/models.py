@@ -55,6 +55,10 @@ class Course(models.Model):
     def __unicode__(self):
         return self.course
 
+    def create_course(self,user,course,timestamp):
+        user_course=self.create(user,course,timestamp)
+        return user_course
+
 class StandAlone(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     name=models.CharField(max_length=50)

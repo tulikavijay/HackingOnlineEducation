@@ -197,12 +197,14 @@ def add(request):
         print('name=',name)
         user=User.objects.get(username=request.user)
         if name and category:
-            page_added=Course.create(
+            page_added=Course(
             user=user,
             course=name,
             timestamp=datetime.now()
             )
-    return HttpResponse('')
+            page_added.save(force_insert=True)
+            print(page_added)
+    return HttpResponse(page_added)
 # def rating(request):
 #     if request.method=='POST':
 #         new_rating=0

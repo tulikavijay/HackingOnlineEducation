@@ -43,11 +43,11 @@ li{
             <div>
               <div class="desc">{{page.name}}</div>
             </div>
-              <div>
-              <form action='' method="post" id="{{page.id}}">{% csrf_token %}
+              <div class="add_course">
+
                <input type="submit" value="add" class="btn btn-default btn-sm"
                data-name="{{page.name}}" data-id="{{page.id}}" data-source="{{page.category}}"/>
-              </form>
+
             </div>
 
             </li>
@@ -61,30 +61,36 @@ li{
 </div>
 {% endblock %}
 {% block script %}
-const inputs=document.querySelectorAll(`input`);
-const forms=document.querySelectorAll(`form`);
+const inputs=document.querySelectorAll(`input[value='add']`);
 var id='';
 var name='';
 var category='';
-function add(){
-  $(this).closest("form").submit();
-  id=$(this).attr('data-id');
-  name=$(this).attr('data-name');
-  cat=$(this).attr('data-source');
+function add(e){
+
+  if(!e.target.matches('input'))
+  {
+    console.log('hi');
+    return;
+  }
+  else{
+   e.preventDefault();
+    id=$(e.target).attr('data-id');
+    name=$(e.target).attr('data-name');
+    cat=$(e.target).attr('data-source');
+    console.log(name);
+    $.post('/add/',
+     {
+       id:id,
+       name:name,
+       category:cat,
+       csrfmiddlewaretoken: '{{ csrf_token }}'
+     }
+    ,function(data){
+      console.log(data);
+    });
+  }
+
 }
-function send(e){
-  e.preventDefault();
-  $.post('/add/',
-   {
-     id:id,
-     name:name,
-     category:cat,
-     csrfmiddlewaretoken: '{{ csrf_token }}'
-   }
-  ,function(data){
-    console.log(data);
-  })
-}
-forms.forEach(form=>{addEventListener('submit',send);});
+
 inputs.forEach(input=>{addEventListener('click',add);});
 {% endblock %}
