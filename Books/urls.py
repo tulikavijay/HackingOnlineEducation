@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^articles/',views.articles, name='articles'),
     url(r'^accounts/enroll/',views.enroll, name='enroll'),
     url(r'^add/',views.add, name='add'),
+    url(r'^remove/',views.remove, name='remove'),
 ]
 
 if settings.DEBUG:

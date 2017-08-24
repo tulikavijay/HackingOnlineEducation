@@ -208,6 +208,18 @@ def add(request):
             page_added.save(force_insert=True)
             print(page_added)
     return HttpResponse(page_added)
+
+@login_required
+def remove(request):
+    if request.method=='POST':
+        name=request.POST.get('name','')
+        id=request.POST.get('id','')
+        print(id)
+        user=User.objects.get(username=request.user)
+        instance = Course.objects.get(id=id)
+        instance.delete()
+    return HttpResponse('')
+
 # def rating(request):
 #     if request.method=='POST':
 #         new_rating=0

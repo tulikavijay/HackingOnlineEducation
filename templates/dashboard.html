@@ -50,10 +50,10 @@ img{
 <div class="sub-heading">Enrolled Courses</div>
 <ul class="list-group">
   {% for user_course in courses %}
-  <li class="list-group-item row" data-name="{{user_course.course}}" data-id="{{user_course.id}}">
+  <li class="list-group-item row" data-course="{{user_course.course}}">
     <div class="pull-left">{{user_course.course}}</div>
     <div class="pull-right">
-      <a href ="#" id="remove">Remove</a>
+      <input type="submit" method="post" value="Remove" id="remove" data-name="{{user_course.course}}" data-id="{{user_course.pk}}">
       {{user_course.date|timesince }}
     </div>
   </li>
@@ -89,12 +89,15 @@ img{
 {% block script %}
 const list=document.querySelector('ul');
 const items=document.querySelectorAll(`li`);
-function delete(e){
-  e.preventDefault();
-  name=this.attr('data-name');
-  id=this.attr('data-id');
-  if(e.target.matches('#remove'))
+function remove(e){
+
+  if(e.target.matches(`input`))
   {
+    e.preventDefault();
+
+    id=$(e.target).attr('data-id');
+    name=$(e.target).attr('data-name');
+    console.log(e.target);
     $.post('/remove/',
      {
        id:id,
@@ -102,12 +105,16 @@ function delete(e){
        csrfmiddlewaretoken: '{{ csrf_token }}'
      }
     ,function(data){
-      console.log(data);
-      list.removeChild(data); 
+      <!-- console.log(data); -->
+      instance=document.querySelector(`li[data-course=${name}]`)
+      instance.parentNode.removeChild(instance);
     });
   }
+  else{
+    return;
+  }
 
   }
 
-items.forEach(item=>{addEventListener('click',delete)})
+items.forEach(item=>{addEventListener('click',remove);});
 {% endblock %}
