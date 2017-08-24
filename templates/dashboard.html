@@ -50,12 +50,11 @@ img{
 <div class="sub-heading">Enrolled Courses</div>
 <ul class="list-group">
   {% for user_course in courses %}
-  <li class="list-group-item row">
+  <li class="list-group-item row" data-name="{{user_course.course}}" data-id="{{user_course.id}}">
     <div class="pull-left">{{user_course.course}}</div>
     <div class="pull-right">
-
+      <a href ="#" id="remove">Remove</a>
       {{user_course.date|timesince }}
-
     </div>
   </li>
   {% endfor %}
@@ -86,4 +85,29 @@ img{
 </div>
 </div>
 </div>
+{% endblock %}
+{% block script %}
+const list=document.querySelector('ul');
+const items=document.querySelectorAll(`li`);
+function delete(e){
+  e.preventDefault();
+  name=this.attr('data-name');
+  id=this.attr('data-id');
+  if(e.target.matches('#remove'))
+  {
+    $.post('/remove/',
+     {
+       id:id,
+       name:name,
+       csrfmiddlewaretoken: '{{ csrf_token }}'
+     }
+    ,function(data){
+      console.log(data);
+      list.removeChild(data); 
+    });
+  }
+
+  }
+
+items.forEach(item=>{addEventListener('click',delete)})
 {% endblock %}
