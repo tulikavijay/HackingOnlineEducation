@@ -52,7 +52,11 @@ img{
   {% for user_course in courses %}
   <li class="list-group-item row">
     <div class="pull-left">{{user_course.course}}</div>
-    <div class="pull-right">{{user_course.date|timesince }} ago</div>
+    <div class="pull-right">
+
+      {{user_course.date|timesince }}
+
+    </div>
   </li>
   {% endfor %}
 </ul>

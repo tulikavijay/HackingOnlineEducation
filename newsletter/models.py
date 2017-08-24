@@ -53,6 +53,9 @@ class Course(models.Model):
     date=models.DateField(default=timezone.now)
     ratings = GenericRelation(Rating, related_query_name='course')
 
+    class Meta :
+        ordering=['course']
+
     def __unicode__(self):
         return self.course
 
