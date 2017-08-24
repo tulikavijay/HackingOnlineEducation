@@ -8,6 +8,7 @@ from .forms import SignUpForm,UserForm,UserProfileForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.http import HttpResponse
+from time import gmtime, strftime
 #from django.contrib.auth.forms import UserChangeForm,PasswordChangeForm
 #importing models
 from .models import UserProfile,Categories,Pages,Course,StandAlone,Challenge

@@ -34,7 +34,7 @@ class PagesAdmin(admin.ModelAdmin):
     form=PagesForm
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display=["__unicode__","timestamp"]
+    list_display=["__unicode__","timestamp","date"]
 
 class StandAloneAdmin(admin.ModelAdmin):
     list_display=["__unicode__","url","description","image"]

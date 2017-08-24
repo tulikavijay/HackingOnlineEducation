@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
-
+from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 # Create your models here.
@@ -50,6 +50,7 @@ class Course(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     course=models.CharField(max_length=50)
     timestamp=models.TimeField()
+    date=models.DateField(default=timezone.now)
     ratings = GenericRelation(Rating, related_query_name='course')
 
     def __unicode__(self):
