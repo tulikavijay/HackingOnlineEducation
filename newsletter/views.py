@@ -171,12 +171,14 @@ def rating_courses(request,category_name):
 def profile(request):
     #user=get_object_or_404(User,user_username=self.kwargs['username'])
     model=UserProfile
-    courses=UserRating.objects.filter(user=request.user)
+    courses=Course.objects.filter(user=request.user)
+    rated_courses=UserRating.objects.filter(user=request.user)
     userprofile=UserProfile.objects.get(user=request.user)
     context={
     'user':request.user,
     'userprofile':userprofile,
-    'courses':courses
+    'courses':courses,
+    'rated_courses':rated_courses
     }
     return render(request,'dashboard.html',context)
 

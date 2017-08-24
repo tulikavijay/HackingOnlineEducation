@@ -36,17 +36,31 @@ img{
 <div class="col-lg-3 col-md-3 col-sm-10 col-xs-10 profile_picture">
    <img src={{userprofile.image.url}} height="290px" width="262.5px" >
 </div>
-<div class="col-lg-6 col-md-6 col-sm-10 col-xs-10">
+<div class="col-lg-9 col-md-9 col-sm-10 col-xs-10">
   <div class="user_info ">
   User : {{user}}<br>
   Email : {{user.email}}<br>
   Contact : {{userprofile.phone}}<br>
   Designation : {{userprofile.designation}}
-  {% if courses %}
+
 </div>
+{% if courses %}
+<div class="sub-heading">Enrolled Courses</div>
+<ul class="list-group">
+  {% for user_course in courses %}
+  <li class="list-group-item row">
+    <div class="pull-left">{{user_course.course}}</div>
+    <div class="pull-right">{{user_course.timestamp}}</div>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+
+ {% if rated_courses %}
   <div class="sub-heading">Your Ratings </div>
   <ul class="list-group">
-    {% for course in courses %}
+    {% for course in rated_courses %}
     <li class="list-group-item row">
       <div class="pull-left">{{course.rating}}</div>
       <div class="pull-right">
