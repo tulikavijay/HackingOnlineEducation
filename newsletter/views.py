@@ -213,10 +213,8 @@ def add(request):
 def remove(request):
     if request.method=='POST':
         name=request.POST.get('name','')
-        id=request.POST.get('id','')
-        print(id)
         user=User.objects.get(username=request.user)
-        instance = Course.objects.get(id=id)
+        instance = Course.objects.get(user=user,course=name)
         instance.delete()
     return HttpResponse('')
 

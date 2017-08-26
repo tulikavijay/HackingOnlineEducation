@@ -53,8 +53,8 @@ img{
   <li class="list-group-item row" data-course="{{user_course.course}}">
     <div class="pull-left">{{user_course.course}}</div>
     <div class="pull-right">
-      <input type="submit" method="post" value="Remove" id="remove" data-name="{{user_course.course}}" data-id="{{user_course.pk}}">
-      {{user_course.date|timesince }}
+      <input type="submit" method="post" value="Remove" id="remove" data-name="{{user_course.course}}" data-id="{{user_course.id}}">
+      {{user_course.date }}
     </div>
   </li>
   {% endfor %}
@@ -97,16 +97,15 @@ function remove(e){
 
     id=$(e.target).attr('data-id');
     name=$(e.target).attr('data-name');
-    console.log(e.target);
+    console.log(id);
     $.post('/remove/',
      {
-       id:id,
        name:name,
        csrfmiddlewaretoken: '{{ csrf_token }}'
      }
     ,function(data){
       <!-- console.log(data); -->
-      instance=document.querySelector(`li[data-course=${name}]`)
+      instance=document.querySelector(`li[data-course='${name}']`);
       instance.parentNode.removeChild(instance);
     });
   }
