@@ -26,9 +26,16 @@ img{
 <div class="base container">
   <div class="sub-heading">Rate and Review:</div>
   <div class="row">
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offse-4 col-sm-12 col-xs-12">
+      <a href="{{category.url}}" target="_blank"> <img src={{category.image.url}} height='250px' width='250px'></a>
+      <div style="text-align:center;padding-top:10px;">
+    {% ratings category 15 15 %}
+    </div>
+  </div>
   <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1 col-sm-12 col-xs-12">
     {% if pages %}
-    <ul class="list-group" style="list-style-type:none;">
+    <ul class="list-group" style="list-style-type:none;margin-top:40px;">
     {% for page in pages %}
     <li class="list-group-item item "><div class="row"><div class="">
       <a href="{{page.url}}" target="_blank">{{page.name}}</a></div>
