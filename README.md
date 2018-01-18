@@ -4,4 +4,14 @@ are now using  the  Web  to  access  vast  amounts  of  information  and  resour
 
 Aim of this Project is to develop a website that assists students and teachers alike to discover online courses, to enroll in courses from different sources, to compare these sources and to track their progress. Students can decide on their own pace and with which session they would like to begin their studies.
 
-
+### Screenshots
+[](images/home_1.png)
+[](images/home_2.png)
+[](images/home_3.png)
+[](images/home_4.png)
+[](images/home_5.png)
+[](images/register.png)
+[](images/categories.png)
+[](images/user_profile.png)
+[](images/add_courses.png)
+[](images/rate_courses.png)
