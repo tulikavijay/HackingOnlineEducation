@@ -7,3 +7,23 @@ Aim of this Project is to develop a website that assists students and teachers a
 ## Main Page
 
 ![ezgif com-optimize](https://user-images.githubusercontent.com/25117249/35183297-8ce7942e-fe09-11e7-86bb-64ad90788fc9.gif)
+
+## View Different Categories and Challenges
+
+![ezgif com-optimize 1](https://user-images.githubusercontent.com/25117249/35183306-d3720820-fe09-11e7-9e08-366879f6a0e8.gif)
+
+## Register or Login
+
+![ezgif com-optimize 2](https://user-images.githubusercontent.com/25117249/35183384-2a82fcea-fe0b-11e7-8908-01bc01e76f6f.gif)
+
+## User profile 
+
+![ezgif com-optimize 3](https://user-images.githubusercontent.com/25117249/35183407-a0ce0818-fe0b-11e7-80e3-ba9a0d8b7800.gif)
+
+## Add courses
+
+![ezgif com-optimize 4](https://user-images.githubusercontent.com/25117249/35183427-f91b7cda-fe0b-11e7-9528-1aea399668fe.gif)
+
+## Rate Course
+
+![ezgif com-optimize 5](https://user-images.githubusercontent.com/25117249/35183435-28633640-fe0c-11e7-96b0-5ddda3726969.gif)
