@@ -4,6 +4,17 @@ are now using  the  Web  to  access  vast  amounts  of  information  and  resour
 
 Aim of this Project is to develop a website that assists students and teachers alike to discover online courses, to enroll in courses from different sources, to compare these sources and to track their progress. Students can decide on their own pace and with which session they would like to begin their studies.
 
+# Table of Contents
+
+- [Hacking Online Education](#hacking-online-education)
+- [Table of Contents](#table-of-contents)
+- [Main Page](#main-page)
+- [View Different Categories and Challenges](#view-different-categories-and-challenges)
+- [Register or Login](#register-or-login)
+- [User Profile](#user-profile)
+- [Add Courses](#add-courses)
+- [Rate Course](#rate-course)
+
 ## Main Page
 
 ![ezgif com-optimize](https://user-images.githubusercontent.com/25117249/35183297-8ce7942e-fe09-11e7-86bb-64ad90788fc9.gif)
@@ -16,11 +27,11 @@ Aim of this Project is to develop a website that assists students and teachers a
 
 ![ezgif com-optimize 2](https://user-images.githubusercontent.com/25117249/35183384-2a82fcea-fe0b-11e7-8908-01bc01e76f6f.gif)
 
-## User profile 
+## User Profile
 
 ![ezgif com-optimize 3](https://user-images.githubusercontent.com/25117249/35183407-a0ce0818-fe0b-11e7-80e3-ba9a0d8b7800.gif)
 
-## Add courses
+## Add Courses
 
 ![ezgif com-optimize 4](https://user-images.githubusercontent.com/25117249/35183427-f91b7cda-fe0b-11e7-9528-1aea399668fe.gif)
 
