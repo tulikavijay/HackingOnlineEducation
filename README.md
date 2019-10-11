@@ -17,25 +17,30 @@ are now using  the  Web  to  access  vast  amounts  of  information  and  resour
 Aim of this Project is to develop a website that assists students and teachers alike to discover online courses, to enroll in courses from different sources, to compare these sources and to track their progress. Students can decide on their own pace and with which session they would like to begin their studies.
 
 ## Main Page
+The main page or home page allows user to login/sign-up and showcases popular MOOCs and courses along with their rating. 
 
 ![ezgif com-optimize](https://user-images.githubusercontent.com/25117249/35183297-8ce7942e-fe09-11e7-86bb-64ad90788fc9.gif)
 
 ## View Different Categories and Challenges
+The user is able to view all MOOCs along with their ratings and on clicking on any one of them, the list of courses appears on the screen. The user is also able to search for MOOCs and courses.
 
 ![ezgif com-optimize 1](https://user-images.githubusercontent.com/25117249/35183306-d3720820-fe09-11e7-9e08-366879f6a0e8.gif)
 
 ## Register or Login
+Basic information is added when registering.
 
 ![ezgif com-optimize 2](https://user-images.githubusercontent.com/25117249/35183384-2a82fcea-fe0b-11e7-8908-01bc01e76f6f.gif)
 
 ## User Profile
+User profile consists of the information added by the user along with a link to enroll in courses.
 
 ![ezgif com-optimize 3](https://user-images.githubusercontent.com/25117249/35183407-a0ce0818-fe0b-11e7-80e3-ba9a0d8b7800.gif)
 
 ## Add Courses
+The user can enroll in courses by simply clicking on add. 
 
 ![ezgif com-optimize 4](https://user-images.githubusercontent.com/25117249/35183427-f91b7cda-fe0b-11e7-9528-1aea399668fe.gif)
 
 ## Rate Course
-
+Courses and MOOCs can be rated by the user.
 ![ezgif com-optimize 5](https://user-images.githubusercontent.com/25117249/35183435-28633640-fe0c-11e7-96b0-5ddda3726969.gif)
